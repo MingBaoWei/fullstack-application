@@ -1,0 +1,50 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ffa962;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #808080;
+    padding: 10px;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .left a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s;
+}
+
+nav .register a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s;
+}
+
+nav .left a:hover, nav .register a:hover {
+    background-color: #777;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.active {
+    background-color: #777;
+}
