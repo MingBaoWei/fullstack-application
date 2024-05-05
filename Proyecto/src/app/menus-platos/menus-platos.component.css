@@ -1,0 +1,54 @@
+.carousel-container {
+    display: flex;
+    overflow: hidden; /* Quitamos el scroll */
+    width: 100%;
+}
+
+.slide {
+    flex: 0 0 auto;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position:relative; /* cambiar a absolute*/
+}
+.first {
+    opacity: 1;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.slide:nth-child(1) {
+    animation: fadeInOut 8s infinite 2s;
+}
+
+.slide:nth-child(2) {
+    animation: fadeInOut 8s infinite 2s;
+}
+
+.slide:nth-child(3) {
+    animation: fadeInOut 8s infinite 4s;
+}
+
+.slide:nth-child(4) {
+    animation: fadeInOut 8s infinite 6s;
+}
+
+.slide img {
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
