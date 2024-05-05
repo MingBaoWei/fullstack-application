@@ -1,19 +1,24 @@
 <header>
-  <h1>RESTAURANTE</h1>
+    <h1>RESTAURANTE</h1>
 </header>
 
 <main>
-  <nav>
-      <div class="container">
-          <div class="left">
-              <a routerLink="/" routerLinkActive="active">Inicio</a>
-              <a routerLink="/menus-platos" routerLinkActive="active">Menús y Bebidas</a>
-              <a routerLink="/reservas" routerLinkActive="active">Reservas</a>
-          </div>
-          <div class="register">
-              <a routerLink="/registrar" routerLinkActive="active">Registrarse / Iniciar Sesión</a>
-          </div>
-      </div>
-  </nav>
-  <router-outlet></router-outlet>
+    <nav>
+        <div class="container">
+            <div class="left">
+                <a routerLink="/" routerLinkActive="active">Inicio</a>
+                <a routerLink="/menus-platos" routerLinkActive="active">Menús y Bebidas</a>
+                <a routerLink="/reservas" routerLinkActive="active">Reservas</a>
+            </div>
+            <div class="register">
+                <a routerLink="/registrar" routerLinkActive="active">Registrarse / Iniciar Sesión</a>
+            </div>
+        </div>
+    </nav>
+    <router-outlet></router-outlet>
 </main>
+
+<br>
+<b>ejemplo de como seria app-registrar</b>
+<br>
+<app-registrar></app-registrar>
