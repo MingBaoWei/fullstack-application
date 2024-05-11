@@ -4,32 +4,20 @@
 
 <main>
     <nav>
-        <div class="container">
-            <div class="left">
-                <a routerLink="/" routerLinkActive="active">Inicio</a>
-                <a routerLink="../app/menus-platos" routerLinkActive="active">Menús y Bebidas</a>
-                <a routerLink="../app/reservas" routerLinkActive="active">Reservas</a>
-            </div>
-            <div class="register">
-                <a routerLink="/registrar" routerLinkActive="active">Registrarse / Iniciar Sesión</a>
-            </div>
+        <div class="left">
+            <a routerLink="/">Inicio</a>
+            <a routerLink="/menus-platos">Menús y Bebidas</a>
+            <a routerLink="/reservas">Reservas</a>
         </div>
     </nav>
     <router-outlet></router-outlet>
 </main>
 <div>
-   <br>
-<b>ejemplo de como seria menus-platos</b>
 <br>    
-<app-menus-platos></app-menus-platos>
+<!-- <app-menus-platos></app-menus-platos> -->
 <br> 
 </div>
+
 <div>
-   <b>ejemplo de como seria app-registrar</b>
-<br>
 <app-registrar></app-registrar>
-<br> 
 </div>
-
-
-
