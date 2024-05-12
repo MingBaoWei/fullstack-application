@@ -9,6 +9,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   register(userData: any): Observable<any> {
-    return this.http.post('http://localhost:8080/Restaurant/DoubleCook/Backend/register.php', userData);
+    return this.http.post('http://localhost:8080/Restaurant/DoubleCookAngular/Backend/register.php', userData);
   }
 }

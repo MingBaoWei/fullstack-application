@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutenticacionComponent } from './autenticacion/autenticacion.component';
 import { MenusComponent } from './menus/menus.component';
+import { ReservasComponent } from './reservas/reservas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AutenticacionComponent,
-    MenusComponent
+    MenusComponent,
+    ReservasComponent
   ],
   imports: [
     BrowserModule,

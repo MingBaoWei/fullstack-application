@@ -1,12 +1,13 @@
 <header>
-    <h1>REGISTRARSE / INICIAR SESIÓN</h1>
+    <h1>DoubleCook</h1>
 </header>
 
 <nav>
     <div class="left">
         <a routerLink="/">Inicio</a>
-        <a routerLink="/menus-platos">Menús y Bebidas</a>
+        <a routerLink="/menus-platos">Menús</a>
         <a routerLink="/reservas">Reservas</a>
+        <a routerLink="/autenticacion">Perfil</a>
     </div>
 </nav>
 
@@ -35,6 +36,9 @@
                 
                 <label for="contrasena">Contraseña:</label>
                 <input type="password" id="contrasena" name="contrasena" required>
+
+                <label for="confirmPass">Confirmar contraseña:</label>
+                <input type="password" id="confirmPass" name="confirmPass" required>
                 
                 <label for="nombre_apellido">Nombre y apellidos:</label>
                 <input type="text" id="nombre_apellido" name="nombre_apellido" required>

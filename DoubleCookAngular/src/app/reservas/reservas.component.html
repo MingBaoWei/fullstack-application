@@ -1,0 +1,33 @@
+<header>
+    <h1>DoubleCook</h1>
+</header>
+
+<nav>
+    <div class="left">
+        <a routerLink="/">Inicio</a>
+        <a routerLink="/menus-platos">Menús</a>
+        <a routerLink="/reservas">Reservas</a>
+        <a routerLink="/autenticacion">Perfil</a>
+    </div>
+</nav>
+
+<section>
+    <div class="contRL">   
+        <div class="register-form">
+            <h2>Reserva</h2>
+            <form method="POST">
+                
+                <label for="numPersonas">Número de personas:</label>
+                <input type="number" id="numPersonas" name="numPersonas" required>
+                
+                <label for="fecha_hora">Fecha y hora:</label>
+                <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
+
+                <label for="numMesa">Elija la mesa (opcional):</label>
+                <input type="number" id="numMesa" name="numMesa">
+                
+                <button type="submit">Reservar</button>
+            </form>
+        </div>  
+    </div>
+</section>
