@@ -1,0 +1,44 @@
+<section>
+    <div class="contRL">
+        <div class="login-form" *ngIf="!showRegisterForm">
+            <h2>Iniciar Sesión</h2>
+            <form>
+                <label for="login_email">Correo:</label>
+                <input type="email" id="login_email" name="login_email" required>
+                
+                <label for="login_password">Contraseña:</label>
+                <input type="password" id="login_password" name="login_password" required>
+                
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes una cuenta? <a (click)="showRegister()">Regístrate aquí</a>.</p>
+        </div>        
+        
+        <div class="register-form" *ngIf="showRegisterForm">
+            <h2>Registro</h2>
+            <form (submit)="registrarUsuario($event)" method="POST">
+                
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" required>
+                
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+
+                <label for="confirmPass">Confirmar contraseña:</label>
+                <input type="password" id="confirmPass" name="confirmPass" required>
+                
+                <label for="nombre_apellido">Nombre y apellidos:</label>
+                <input type="text" id="nombre_apellido" name="nombre_apellido" required>
+                
+                <input type="hidden" id="rol" name="rol" value="cliente">
+                
+                <label for="numero">Teléfono:</label>
+                <input type="tel" id="numero" name="numero">
+                
+                <button type="submit">Registrarse</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <a (click)="showLogin()">Inicia sesión aquí</a>.</p>
+        </div>
+        
+    </div>
+</section>
