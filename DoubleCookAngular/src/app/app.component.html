@@ -1,17 +1,21 @@
-<header>
-  <h1>DoubleCook</h1>
+<div class="header">
+  <div class="title">DoubleCook</div>
+  <button class="toggle-button" (click)="toggleMenu()">Toggle Menu</button>
+</div>
+
+<header [ngClass]="{'hidden': hideMenu}">
+  <!-- Aquí va tu menú de inicio -->
+  <nav>
+    <ul>
+      <li><a routerLink="/autenticacion">Autenticación</a></li>
+      <li><a routerLink="/menus">Menús</a></li>
+      <li><a routerLink="/reservas">Reservas</a></li>
+    </ul>
+  </nav>
+  <!-- Agrega cualquier otro contenido del encabezado que desees -->
 </header>
 
 <main>
-  <nav>
-      <div class="left">
-          <a routerLink="/">Inicio</a>
-          <a routerLink="/menus-platos">Menús</a>
-          <a routerLink="/reservas">Reservas</a>
-          <a routerLink="/autenticacion">Perfil</a>
-      </div>
-  </nav>
+  <!-- El contenido dinámico se mostrará aquí -->
   <router-outlet></router-outlet>
 </main>
-
-<br>
