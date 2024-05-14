@@ -7,9 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DoubleCook';
-  hideMenu: boolean = false;
-
-  toggleMenu() {
-    this.hideMenu = !this.hideMenu;
-  }
 }

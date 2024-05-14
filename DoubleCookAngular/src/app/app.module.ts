@@ -7,22 +7,20 @@ import { AppComponent } from './app.component';
 import { AutenticacionComponent } from './autenticacion/autenticacion.component';
 import { MenusComponent } from './menus/menus.component';
 import { ReservasComponent } from './reservas/reservas.component';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AutenticacionComponent,
     MenusComponent,
-    ReservasComponent
+    ReservasComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([])
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
