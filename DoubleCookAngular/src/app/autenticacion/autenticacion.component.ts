@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-autenticacion',
@@ -10,7 +11,7 @@ export class AutenticacionComponent {
 
   errorMessage: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   registrarUsuario(event: any) {
     event.preventDefault();
@@ -40,7 +41,13 @@ export class AutenticacionComponent {
 
     // Llamar al método del servicio para registrar al usuario
     this.authService.registrarUsuario(datosUsuario).subscribe(response => {
-      console.log(response); // Manejar la respuesta del servidor si es necesario
+      console.log(response);
+      // Verificar si el registro fue exitoso antes de redirigir
+      if (response && response.message === 'Usuario registrado exitosamente') {
+          // Redirigir al perfil después del registro exitoso
+          console.log("Redireccionando");
+          this.router.navigate(['/perfil']);
+      }
     });
   }
 

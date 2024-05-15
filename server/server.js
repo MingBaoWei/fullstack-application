@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Importar el paquete cors
+const cors = require('cors');
 
 const app = express();
 
@@ -33,7 +33,7 @@ app.use(cors());
 // Definir ruta para obtener datos de la tabla 'menus'
 app.get('/api/data', (req, res) => {
     // Consulta SQL para obtener los datos de la tabla 'menus'
-    connection.query('SELECT * FROM menus', (error, results) => {
+    connection.query('SELECT * FROM usuarios', (error, results) => {
         if (error) {
             throw error;
         } else {
@@ -52,10 +52,10 @@ app.post('/api/usuarios', (req, res) => {
         [correo, contrasena, nombre_apellido, rol, numero],
         (error, results) => {
             if (error) {
-                throw error;
+                res.status(500).json({ error: error.message }); // Devolver un error en formato JSON
             } else {
-                // Si la inserción es exitosa, enviar una respuesta de éxito
-                res.status(201).send('Usuario registrado exitosamente');
+                // Si la inserción es exitosa, enviar una respuesta de éxito en formato JSON
+                res.status(201).json({ message: 'Usuario registrado exitosamente' });
             }
         }
     );
