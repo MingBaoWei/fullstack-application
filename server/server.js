@@ -42,8 +42,30 @@ app.get('/api/data', (req, res) => {
     });
 });
 
+// Definir ruta para iniciar sesión
+app.post('/api/iniciar-sesion', (req, res) => {
+    // Obtener los datos del cuerpo de la solicitud
+    const { correo, contrasena } = req.body;
+
+    // Realizar la verificación de las credenciales en la base de datos
+    connection.query('SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?',
+        [correo, contrasena],
+        (error, results) => {
+            if (error) {
+                res.status(500).json({ error: error.message }); // Error del servidor
+            } else {
+                if (results.length > 0) {
+                    res.status(200).json({ message: 'Inicio de sesión exitoso' }); // Credenciales válidas
+                } else {
+                    res.status(401).json({ error: 'Credenciales inválidas' }); // Credenciales inválidas
+                }
+            }
+        }
+    );
+});
+
 // Definir ruta para registrar un nuevo usuario en la base de datos
-app.post('/api/usuarios', (req, res) => {
+app.post('/api/register', (req, res) => {
     // Obtener los datos del cuerpo de la solicitud
     const { correo, contrasena, nombre_apellido, rol, numero } = req.body;
 

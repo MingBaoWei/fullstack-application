@@ -45,7 +45,26 @@ export class AutenticacionComponent {
       // Verificar si el registro fue exitoso antes de redirigir
       if (response && response.message === 'Usuario registrado exitosamente') {
           // Redirigir al perfil después del registro exitoso
-          console.log("Redireccionando");
+          console.log("Redireccionando al perfil");
+          this.router.navigate(['/perfil']);
+      }
+    });
+  }
+
+  iniciarSesion(event: any) {
+    event.preventDefault();
+
+    // Obtener los valores del formulario
+    const correo = event.target.elements.correo.value;
+    const contrasena = event.target.elements.contrasena.value;
+
+    // Llamar al método del servicio para iniciar sesión
+    this.authService.iniciarSesion(correo, contrasena).subscribe(response => {
+      console.log(response);
+      // Verificar si el inicio de sesión fue exitoso antes de redirigir
+      if (response && response.message === 'Inicio de sesión exitoso') {
+          // Redirigir al perfil después del inicio de sesión exitoso
+          console.log("Redireccionando al perfil");
           this.router.navigate(['/perfil']);
       }
     });
@@ -63,5 +82,4 @@ export class AutenticacionComponent {
     this.showLoginForm = false;
     this.showRegisterForm = true;
   }
-  
 }
