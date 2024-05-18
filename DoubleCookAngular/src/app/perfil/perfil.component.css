@@ -1,22 +1,30 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f0f2f5;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .profile {
-    max-width: 600px;
-    margin: 50px auto;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
 }
 
 .profile h1 {
     text-align: center;
-    margin-bottom: 20px;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 24px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
 }
 
 .profile-info {
@@ -25,13 +33,40 @@ body {
 }
 
 .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
 }
 
 label {
     font-weight: bold;
+    color: #555;
+    flex: 1;
 }
 
 span {
-    margin-left: 10px;
+    color: #777;
+    flex: 2;
+    text-align: right;
 }
+
+.profile-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* color de fondo */
+    color: white; /* color del texto */
+    border: none; /* quitar borde */
+    border-radius: 5px; /* esquinas redondeadas */
+    cursor: pointer; /* cursor de puntero al pasar sobre el botón */
+    font-size: 16px; /* tamaño del texto */
+  }
+  
+  .profile-button:hover {
+    background-color: #45a049; /* color de fondo al pasar el mouse */
+  }

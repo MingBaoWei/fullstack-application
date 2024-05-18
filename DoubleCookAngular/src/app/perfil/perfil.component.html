@@ -2,22 +2,25 @@
     <div class="profile">
         <h1>Perfil de Usuario</h1>
         <div class="profile-info">
-            <div class="info-item">
-                <label for="idUsuario">ID de Usuario:</label>
-                <span id="idUsuario">123456</span>
-            </div>
-            <div class="info-item">
-                <label for="correo">Correo:</label>
-                <span id="correo">usuario&#64;example.com</span>
-            </div>
-            <div class="info-item">
-                <label for="nombre-apellido">Nombre y Apellido:</label>
-                <span id="nombre-apellido">Juan Pérez</span>
-            </div>
-            <div class="info-item">
-                <label for="numero">Número:</label>
-                <span id="numero">123-456-7890</span>
-            </div>
+          <div class="info-item">
+            <label for="idUsuario">ID de Usuario:</label>
+            <span id="idUsuario">{{ userData?.idUsuario || '123456' }}</span>
+          </div>
+          <div class="info-item">
+            <label for="correo">Correo:</label>
+            <span id="correo">{{ userData?.correo || 'usuario@example.com' }}</span>
+          </div>
+          <div class="info-item">
+            <label for="nombre-apellido">Nombre y Apellido:</label>
+            <span id="nombre-apellido">{{ userData?.nombre_apellido || 'Juan Pérez' }}</span>
+          </div>
+          <div class="info-item">
+            <label for="numero">Número:</label>
+            <span id="numero">{{ userData?.numero || '123-456-7890' }}</span>
+          </div>
         </div>
-    </div>
+        <button *ngIf="isAuthenticated()" class="profile-button" (click)="cerrarSesion()">Cerrar Sesión</button>
+        <button *ngIf="!isAuthenticated()" class="profile-button" (click)="irAutenticacion()">¡Logéate si no lo estás!</button>
+      </div>
+      
 </body>

@@ -45,8 +45,8 @@ export class AutenticacionComponent {
       // Verificar si el registro fue exitoso antes de redirigir
       if (response && response.message === 'Usuario registrado exitosamente') {
           // Redirigir al perfil después del registro exitoso
-          console.log("Redireccionando al perfil");
-          this.router.navigate(['/perfil']);
+          console.log("Redireccionando a logearse");
+          this.router.navigate(['/autenticacion']);
       }
     });
   }

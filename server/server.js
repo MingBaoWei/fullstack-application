@@ -55,7 +55,8 @@ app.post('/api/iniciar-sesion', (req, res) => {
                 res.status(500).json({ error: error.message }); // Error del servidor
             } else {
                 if (results.length > 0) {
-                    res.status(200).json({ message: 'Inicio de sesión exitoso' }); // Credenciales válidas
+                    // Enviar los datos del usuario junto con el mensaje de inicio de sesión exitoso
+                    res.status(200).json({ message: 'Inicio de sesión exitoso', user: results[0] });
                 } else {
                     res.status(401).json({ error: 'Credenciales inválidas' }); // Credenciales inválidas
                 }
@@ -63,6 +64,7 @@ app.post('/api/iniciar-sesion', (req, res) => {
         }
     );
 });
+
 
 // Definir ruta para registrar un nuevo usuario en la base de datos
 app.post('/api/register', (req, res) => {
