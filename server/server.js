@@ -90,3 +90,28 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
 });
+
+// Definir ruta para obtener la lista de platos de un menú
+app.get('/api/menu/:id/platos', (req, res) => {
+    const menuId = req.params.id;
+    // Consulta SQL para obtener los platos de un menú específico
+    connection.query('SELECT * FROM platos WHERE menu_id = ?', [menuId], (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(results);
+        }
+    });
+});
+
+// Definir ruta para obtener la lista de categorías de platos disponibles
+app.get('/api/categorias', (req, res) => {
+    // Consulta SQL para obtener las categorías de platos
+    connection.query('SELECT DISTINCT categoria FROM platos', (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(results);
+        }
+    });
+});

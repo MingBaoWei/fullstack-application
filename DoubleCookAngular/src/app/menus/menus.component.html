@@ -12,3 +12,26 @@
         <img src="assets/img/4.jpg" alt="Image 4">
     </div>
 </div>
+<!-- Mostrar la lista de menús -->
+<div *ngFor="let menu of menus">
+    <h2>{{ menu.nombre }}</h2>
+    <button (click)="obtenerPlatos(menu.id)">Ver platos</button>
+  </div>
+  
+  <!-- Mostrar los platos de un menú específico -->
+  <div *ngIf="platos.length > 0">
+    <h3>Platos</h3>
+    <div *ngFor="let plato of platos">
+      <p>{{ plato.nombre }}</p>
+      <p>{{ plato.descripcion }}</p>
+      <p>{{ plato.precio }}</p>
+      <!-- Agregar más información del plato según sea necesario -->
+    </div>
+  </div>
+  
+  <!-- Mostrar la lista de categorías -->
+  <h3>Categorías</h3>
+  <ul>
+    <li *ngFor="let categoria of categorias">{{ categoria }}</li>
+  </ul>
+  

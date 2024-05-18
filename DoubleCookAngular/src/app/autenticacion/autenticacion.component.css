@@ -1,62 +1,59 @@
-section {
+.autenticacion-container {
+    background-image: url('../../assets/img/2.2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .contRL {
     display: flex;
-    justify-content: space-around;
-    margin: 20px auto;
-    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
-.contRL a {
-    color: #007bff; 
-    text-decoration: none; 
-    cursor: pointer; 
-}
-
-.contRL a:hover {
-    text-decoration: underline;
-}
-
 
 .register-form, .login-form {
-    background-color: #f5f5f5;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    width: 500px; /* Ajusta el ancho de la tabla de registro y el formulario de inicio de sesión */
-    margin: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
 }
 
-.register-form:hover, .login-form:hover {
-    transform: translateY(-5px);
+.register-form h2, .login-form h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
 }
 
 .register-form form, .login-form form {
     display: flex;
     flex-direction: column;
-}
-
-.register-form h2, .login-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
+    align-items: center;
 }
 
 .register-form label, .login-form label {
     margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
 }
 
-.register-form input, .login-form input, .register-form button, .login-form button {
-    padding: 10px;
-    margin-bottom: 10px;
+.register-form input, .register-form button, .login-form input, .login-form button {
+    padding: 12px;
+    margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
 }
 
 .register-form button, .login-form button {
     background-color: #007bff;
     color: #fff;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -69,5 +66,4 @@ section {
     color: red;
     font-size: 15px;
     font-weight: bold;
-  }
-  
+}
