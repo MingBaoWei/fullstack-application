@@ -7,9 +7,9 @@ const app = express();
 
 // Configuración de la conexión MySQL
 const connection = mysql.createConnection({
-    host: 'WIN-DELJ78QFRUF',
+    host: '192.168.1.13',
     user: 'admin',
-    password: '1234',
+    password: '1234Qwer',
     database: 'mydb',
     connectTimeout: 300000
 });
@@ -85,33 +85,34 @@ app.post('/api/register', (req, res) => {
     );
 });
 
+// Definir ruta para obtener datos de la tabla 'menus'
+app.get('/api/menus', (req, res) => {
+    // Consulta SQL para obtener los datos de la tabla 'menus'
+    connection.query('SELECT * FROM menus', (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(results);
+        }
+    });
+});
+
+// Definir ruta para obtener la lista de platos de un menú
+app.get('/api/menu/:id', (req, res) => {
+    const menuId = req.params.id;
+    // Consulta SQL para obtener los platos de un menú específico
+    connection.query('SELECT * FROM menus WHERE idMenus = ?', [menuId], (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(results);
+        }
+    });
+});
+
+
 // Iniciar el servidor
 const port = 3000;
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
-});
-
-// Definir ruta para obtener la lista de platos de un menú
-app.get('/api/menu/:id/platos', (req, res) => {
-    const menuId = req.params.id;
-    // Consulta SQL para obtener los platos de un menú específico
-    connection.query('SELECT * FROM platos WHERE menu_id = ?', [menuId], (error, results) => {
-        if (error) {
-            throw error;
-        } else {
-            res.send(results);
-        }
-    });
-});
-
-// Definir ruta para obtener la lista de categorías de platos disponibles
-app.get('/api/categorias', (req, res) => {
-    // Consulta SQL para obtener las categorías de platos
-    connection.query('SELECT DISTINCT categoria FROM platos', (error, results) => {
-        if (error) {
-            throw error;
-        } else {
-            res.send(results);
-        }
-    });
 });

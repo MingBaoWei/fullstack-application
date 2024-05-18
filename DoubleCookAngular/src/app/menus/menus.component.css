@@ -1,54 +1,94 @@
-.carousel-container {
-    display: flex;
-    overflow: hidden; /* Quitamos el scroll */
-    width: 100%;
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* Color de texto predeterminado */
 }
 
-.slide {
-    flex: 0 0 auto;
-    width: 100%;
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas por fila */
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Espaciado */
+    text-align: center;
+}
+
+.menu-item {
+    width: 100%; /* Ancho del contenedor */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo con opacidad */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, opacity 0.3s; /* Transición de entrada */
+    opacity: 0; /* Ocultar por defecto */
+}
+
+.menu-item.show {
+    opacity: 1; /* Mostrar con animación */
+}
+
+.menu-info {
+    padding: 20px;
+}
+
+.menu-price {
+    font-size: 18px;
+    color: #333;
+}
+
+.menu-description {
+    color: #555;
+}
+
+.menu-categories {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.menu-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+    background-color: #0056b3;
+}
+
+.platos-container {
+    margin-top: 20px;
+    display: none;
+}
+
+.plato-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.plato-price {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Animaciones */
+.menu-item-enter {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
-    position:absolute; /* cambiar a absolute*/
-}
-.first {
-    opacity: 1;
-}
-
-@keyframes fadeInOut {
-    0% {
-        opacity: 1;
-    }
-    25% {
-        opacity: 0;
-    }
-    75% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-.slide:nth-child(1) {
-    animation: fadeInOut 8s infinite 2s;
-}
-
-.slide:nth-child(2) {
-    animation: fadeInOut 8s infinite 2s;
-}
-
-.slide:nth-child(3) {
-    animation: fadeInOut 8s infinite 4s;
-}
-
-.slide:nth-child(4) {
-    animation: fadeInOut 8s infinite 6s;
-}
-
-.slide img {
-    width: 75%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
+    transform: translate
 }

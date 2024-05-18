@@ -1,5 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MenuCategoriaServiceService } from '../menu-categoria-service.service';
 
 @Component({
   selector: 'app-menus',
@@ -8,20 +9,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MenusComponent implements OnInit {
   menus: any[] = [];
-  platos: any[] = [];
-  categorias: string[] = [];
-
-  constructor(private http: HttpClient) { }
+  nuevoMenu: any = {}; // Objeto para almacenar los datos del nuevo menú
+  
+  constructor(private menucategoria: MenuCategoriaServiceService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.obtenerMenus();
-    this.obtenerCategorias();
   }
 
   obtenerMenus(): void {
-    this.http.get<any[]>('/api/menus').subscribe(
+    this.menucategoria.obtenerMenus().subscribe(
       (response) => {
         this.menus = response;
+        // Agregar una propiedad para controlar la visibilidad de los platos
+        this.menus.forEach(menu => menu.platosVisible = false);
       },
       (error) => {
         console.error('Error al obtener los menús:', error);
@@ -29,25 +30,18 @@ export class MenusComponent implements OnInit {
     );
   }
 
-  obtenerPlatos(menuId: number): void {
-    this.http.get<any[]>(`/api/menu/${menuId}/platos`).subscribe(
-      (response) => {
-        this.platos = response;
-      },
-      (error) => {
-        console.error('Error al obtener los platos del menú:', error);
-      }
+  crearMenu(): void {
+    this.http.post('http://localhost:3000/api/menu', this.nuevoMenu).subscribe(
+        (response) => {
+            console.log('Menú creado exitosamente:', response);
+            // Actualizar la lista de menús después de crear el nuevo menú
+            this.obtenerMenus();
+            // Limpiar los campos del formulario después de crear el nuevo menú
+            this.nuevoMenu = {};
+        },
+        (error) => {
+            console.error('Error al crear el menú:', error);
+        }
     );
-  }
-
-  obtenerCategorias(): void {
-    this.http.get<string[]>('/api/categorias').subscribe(
-      (response) => {
-        this.categorias = response;
-      },
-      (error) => {
-        console.error('Error al obtener las categorías de platos:', error);
-      }
-    );
-  }
+}
 }

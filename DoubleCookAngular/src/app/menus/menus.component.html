@@ -1,37 +1,10 @@
-<div class="carousel-container">
-    <div class="slide first">
-        <img src="assets/img/1.jpeg" alt="Image 1">
-    </div>
-    <div class="slide">
-        <img src="assets/img/2.jpeg" alt="Image 2">
-    </div>
-    <div class="slide">
-        <img src="assets/img/3.jpeg" alt="Image 3">
-    </div>
-    <div class="slide">
-        <img src="assets/img/4.jpg" alt="Image 4">
+<!-- Mostrar la lista de menús -->
+<div class="menu-container">
+    <div *ngFor="let menu of menus">
+      <h2>{{ menu.nombre }}</h2>
+      <p>Precio: {{ menu.precio }}</p>
+      <p>Descripción: {{ menu.descripcion }}</p>
+      <p>Categorías: {{ menu.categorias }}</p>
+      <p>Imagen: <img [src]="menu.img" alt="Imagen de {{ menu.nombre }}"></p>
     </div>
 </div>
-<!-- Mostrar la lista de menús -->
-<div *ngFor="let menu of menus">
-    <h2>{{ menu.nombre }}</h2>
-    <button (click)="obtenerPlatos(menu.id)">Ver platos</button>
-  </div>
-  
-  <!-- Mostrar los platos de un menú específico -->
-  <div *ngIf="platos.length > 0">
-    <h3>Platos</h3>
-    <div *ngFor="let plato of platos">
-      <p>{{ plato.nombre }}</p>
-      <p>{{ plato.descripcion }}</p>
-      <p>{{ plato.precio }}</p>
-      <!-- Agregar más información del plato según sea necesario -->
-    </div>
-  </div>
-  
-  <!-- Mostrar la lista de categorías -->
-  <h3>Categorías</h3>
-  <ul>
-    <li *ngFor="let categoria of categorias">{{ categoria }}</li>
-  </ul>
-  
