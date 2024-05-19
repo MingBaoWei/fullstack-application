@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ReservasService } from '../reservas.service';
 import { AuthService } from '../auth.service'; // Asegúrate de tener el AuthService para obtener el id del usuario
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservas',
@@ -13,13 +14,21 @@ export class ReservasComponent {
   numMesa: number = 0;
   errorMessage: string = '';
 
-  constructor(private reservasService: ReservasService, private authService: AuthService) { }
+  constructor(private router: Router, private reservasService: ReservasService, private authService: AuthService) { }
+
+  verReservas(): void {
+    if (!this.authService.isAuthenticated()) {
+      alert('Por favor, inicia sesión para ver tus reservas.');
+      return;
+    }
+    this.router.navigate(['/mis-reservas']);
+  }
 
   registrarReserva(): void {
 
     if (!this.authService.isAuthenticated()) {
       // Si el usuario no está autenticado, mostrar un mensaje de error y salir de la función
-      this.errorMessage = 'Debes iniciar sesión para realizar una reserva.';
+      this.errorMessage = 'Debes iniciar sesión para realizar una reserva o ver tus reservas';
       return;
     }
 

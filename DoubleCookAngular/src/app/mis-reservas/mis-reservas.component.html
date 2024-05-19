@@ -1,0 +1,13 @@
+<body>
+    <div class="reservas-container">
+      <h2 class="reservas-title">Mis Reservas</h2>
+      <ul class="reservas-list">
+        <li class="reserva-item" *ngFor="let reserva of reservas">
+          <p>Fecha y hora: {{ reserva.fecha_hora }}</p>
+          <p>Número de personas: {{ reserva.numPersonas }}</p>
+          <p>Número de mesa: {{ reserva.numMesa }}</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+  

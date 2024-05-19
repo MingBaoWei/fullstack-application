@@ -10,6 +10,7 @@ import { MenusComponent } from './menus/menus.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { MisReservasComponent } from './mis-reservas/mis-reservas.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     ReservasComponent,
     InicioComponent,
     PerfilComponent,
+    MisReservasComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,46 @@
+body {
+    background-image: url('../../assets/img/1.1.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: flex-start; /* Alinear arriba verticalmente */
+    min-height: 100vh;
+  }
+  
+  .reservas-container {
+    margin-top: 50px; /* Espacio arriba para separar del borde superior */
+    width: 100%;
+  }
+  
+  /* Estilos para la lista de reservas */
+  .reservas-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Estilos para cada elemento de reserva */
+  .reserva-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgba(249, 249, 249, 0.7); /* Color de fondo transparente */
+  }
+  
+  /* Estilos para los párrafos de información de reserva */
+  .reserva-item p {
+    margin: 5px 0;
+    text-align: center;
+  }
+  
+  /* Estilos para el título "Mis Reservas" */
+  .reservas-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  

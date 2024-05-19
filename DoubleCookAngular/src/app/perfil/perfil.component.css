@@ -1,6 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    background-image: url('../../assets/img/1.1.jpg');
+    background-size: cover;
+    background-position: center;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,7 +12,7 @@ body {
 }
 
 .profile {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -30,6 +32,14 @@ body {
 .profile-info {
     display: flex;
     flex-direction: column;
+}
+
+.profile-button {
+    margin-right: 10px; /* Añade un margen inferior de 10px entre los botones */
+}
+
+.profile-button.confirm {
+    margin-left: 10px;
 }
 
 .info-item {

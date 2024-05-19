@@ -143,6 +143,25 @@ app.post('/api/reservar', (req, res) => {
     );
 });
 
+// Definir ruta para obtener las reservas del usuario
+app.get('/api/reservas', (req, res) => {
+    // Verificar si el usuario está autenticado
+    const usuarioId = req.query.usuarioId;
+    if (!usuarioId) {
+        return res.status(401).json({ error: 'Usuario no autenticado' });
+    }
+
+    // Consulta SQL para obtener las reservas del usuario
+    const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' '); // Obtener la fecha y hora actual en formato compatible con MySQL
+    connection.query('SELECT * FROM reservas WHERE Usuarios_idUsuario = ? AND fecha_hora > ? ORDER BY fecha_hora DESC', [usuarioId, currentDate], (error, results) => {
+        if (error) {
+            res.status(500).json({ error: error.message });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
 // // Definir ruta para obtener datos de la tabla 'menus'
 // app.get('/api/menus', (req, res) => {
 //     // Consulta SQL para obtener los datos de la tabla 'menus'

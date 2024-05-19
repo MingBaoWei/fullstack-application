@@ -33,7 +33,7 @@
       <button *ngIf="!isEditing && !isConfirmingPassword" class="profile-button" (click)="startEditing()">Modificar Datos</button>
       <div *ngIf="isConfirmingPassword">
         <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="confirmPassword">
-        <button class="profile-button" (click)="confirmPasswordAndEdit()">Confirmar</button>
+        <button class="profile-button confirm" (click)="confirmPasswordAndEdit()">Confirmar</button>
         <button class="profile-button" (click)="cancelEditing()">Cancelar</button>
       </div>
       <button *ngIf="isEditing" class="profile-button" (click)="actualizarDatos()">Guardar Cambios</button>

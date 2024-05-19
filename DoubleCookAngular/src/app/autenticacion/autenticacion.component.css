@@ -67,3 +67,19 @@
     font-size: 15px;
     font-weight: bold;
 }
+
+.autenticacion-container a {
+    color: #007bff; /* Color del enlace */
+    text-decoration: none; /* Quita el subrayado por defecto */
+    transition: color 0.3s; /* Transición suave del color */
+  }
+  
+  .autenticacion-container a:hover {
+    color: #0056b3; /* Cambia el color al pasar el ratón */
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  }
+  
+  .autenticacion-container p {
+    color: black; /* Color del texto dentro del enlace */
+  }
