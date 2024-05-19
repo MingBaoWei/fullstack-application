@@ -7,7 +7,7 @@ const app = express();
 
 // Configuración de la conexión MySQL
 const connection = mysql.createConnection({
-    host: '192.168.1.13',
+    host: '192.168.1.133',
     user: 'admin',
     password: '1234Qwer',
     database: 'mydb',
@@ -85,30 +85,65 @@ app.post('/api/register', (req, res) => {
     );
 });
 
-// Definir ruta para obtener datos de la tabla 'menus'
-app.get('/api/menus', (req, res) => {
-    // Consulta SQL para obtener los datos de la tabla 'menus'
-    connection.query('SELECT * FROM menus', (error, results) => {
+// Confirmar contraseña
+app.post('/api/confirm-password', (req, res) => {
+    const { idUsuario, password } = req.body;
+    
+    connection.query('SELECT contrasena FROM usuarios WHERE idUsuario = ?', [idUsuario], (error, results) => {
         if (error) {
-            throw error;
+            res.status(500).json({ error: error.message });
+        } else if (results.length === 0 || results[0].contrasena !== password) {
+            res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
         } else {
-            res.send(results);
+            res.status(200).json({ success: true, message: 'Contraseña confirmada' });
         }
     });
 });
 
-// Definir ruta para obtener la lista de platos de un menú
-app.get('/api/menu/:id', (req, res) => {
-    const menuId = req.params.id;
-    // Consulta SQL para obtener los platos de un menú específico
-    connection.query('SELECT * FROM menus WHERE idMenus = ?', [menuId], (error, results) => {
-        if (error) {
-            throw error;
-        } else {
-            res.send(results);
+// Definir ruta para actualizar datos de usuario
+app.put('/api/update-user', (req, res) => {
+    const { idUsuario, correo, contrasena, nombre_apellido, rol, numero, newPassword } = req.body;
+
+    const updatedData = [correo, newPassword || contrasena, nombre_apellido, rol, numero, idUsuario];
+    connection.query(
+        'UPDATE usuarios SET correo = ?, contrasena = ?, nombre_apellido = ?, rol = ?, numero = ? WHERE idUsuario = ?',
+        updatedData,
+        (updateError, updateResults) => {
+            if (updateError) {
+                res.status(500).json({ error: updateError.message });
+            } else {
+                res.status(200).json({ message: 'Datos actualizados correctamente' });
+            }
         }
-    });
+    );
 });
+
+
+
+// // Definir ruta para obtener datos de la tabla 'menus'
+// app.get('/api/menus', (req, res) => {
+//     // Consulta SQL para obtener los datos de la tabla 'menus'
+//     connection.query('SELECT * FROM menus', (error, results) => {
+//         if (error) {
+//             throw error;
+//         } else {
+//             res.send(results);
+//         }
+//     });
+// });
+
+// // Definir ruta para obtener la lista de platos de un menú
+// app.get('/api/menu/:id', (req, res) => {
+//     const menuId = req.params.id;
+//     // Consulta SQL para obtener los platos de un menú específico
+//     connection.query('SELECT * FROM menus WHERE idMenus = ?', [menuId], (error, results) => {
+//         if (error) {
+//             throw error;
+//         } else {
+//             res.send(results);
+//         }
+//     });
+// });
 
 
 // Iniciar el servidor

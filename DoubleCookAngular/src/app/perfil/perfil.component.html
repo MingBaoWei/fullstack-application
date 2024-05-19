@@ -1,26 +1,46 @@
 <body>
-    <div class="profile">
-        <h1>Perfil de Usuario</h1>
-        <div class="profile-info">
-          <div class="info-item">
-            <label for="idUsuario">ID de Usuario:</label>
-            <span id="idUsuario">{{ userData?.idUsuario || '123456' }}</span>
-          </div>
-          <div class="info-item">
-            <label for="correo">Correo:</label>
-            <span id="correo">{{ userData?.correo || 'usuario@example.com' }}</span>
-          </div>
-          <div class="info-item">
-            <label for="nombre-apellido">Nombre y Apellido:</label>
-            <span id="nombre-apellido">{{ userData?.nombre_apellido || 'Juan Pérez' }}</span>
-          </div>
-          <div class="info-item">
-            <label for="numero">Número:</label>
-            <span id="numero">{{ userData?.numero || '123-456-7890' }}</span>
-          </div>
-        </div>
-        <button *ngIf="isAuthenticated()" class="profile-button" (click)="cerrarSesion()">Cerrar Sesión</button>
-        <button *ngIf="!isAuthenticated()" class="profile-button" (click)="irAutenticacion()">¡Logéate si no lo estás!</button>
+  <div class="profile">
+    <h1>Perfil de Usuario</h1>
+    <div class="profile-info">
+      <div class="info-item">
+        <label for="idUsuario">ID de Usuario:</label>
+        <span id="idUsuario">{{ userData.idUsuario }}</span>
       </div>
-      
+      <div class="info-item">
+        <label for="correo">Correo:</label>
+        <span *ngIf="!isEditing">{{ userData.correo }}</span>
+        <input *ngIf="isEditing" id="correo" [(ngModel)]="userData.correo">
+      </div>
+      <div class="info-item">
+        <label for="contrasena">Contraseña:</label>
+        <span *ngIf="!isEditing">******</span>
+        <div *ngIf="isEditing">
+          <input id="newPassword" type="password" placeholder="Nueva contraseña" [(ngModel)]="newPassword">
+        </div>
+      </div>
+      <div class="info-item">
+        <label for="nombre-apellido">Nombre y Apellido:</label>
+        <span *ngIf="!isEditing">{{ userData.nombre_apellido }}</span>
+        <input *ngIf="isEditing" id="nombre-apellido" [(ngModel)]="userData.nombre_apellido">
+      </div>
+      <div class="info-item">
+        <label for="numero">Número:</label>
+        <span *ngIf="!isEditing">{{ userData.numero }}</span>
+        <input *ngIf="isEditing" id="numero" [(ngModel)]="userData.numero">
+      </div>
+    </div>
+    <div *ngIf="isAuthenticated()">
+      <button *ngIf="!isEditing && !isConfirmingPassword" class="profile-button" (click)="startEditing()">Modificar Datos</button>
+      <div *ngIf="isConfirmingPassword">
+        <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="confirmPassword">
+        <button class="profile-button" (click)="confirmPasswordAndEdit()">Confirmar</button>
+        <button class="profile-button" (click)="cancelEditing()">Cancelar</button>
+      </div>
+      <button *ngIf="isEditing" class="profile-button" (click)="actualizarDatos()">Guardar Cambios</button>
+      <button *ngIf="isEditing" class="profile-button" (click)="cancelEditing()">Cancelar</button>
+      <button class="profile-button" (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+    <button *ngIf="!isAuthenticated()" class="profile-button" (click)="irAutenticacion()">¡Logéate si no lo estás!</button>
+  </div>
+  
 </body>
