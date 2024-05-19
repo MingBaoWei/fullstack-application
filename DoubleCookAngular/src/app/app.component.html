@@ -1,15 +1,17 @@
 <header>
-  <h1>DoubleCook</h1>
+  <div class="logo">
+    <h1 style="color: rgb(77, 77, 77);">DoubleCook</h1>
+  </div>
 </header>
 
 <main>
   <nav>
-    <div class="left">
-      <a routerLink="/inicio">Inicio</a>
-      <a routerLink="/menus">Menús</a>
-      <a routerLink="/reservas">Reservas</a>
-      <a routerLink="/perfil">Perfil</a>
-  </div>
+    <ul class="nav-links">
+      <li><a routerLink="/inicio" routerLinkActive="active">Inicio</a></li>
+      <li><a routerLink="/menus" routerLinkActive="active">Menús</a></li>
+      <li><a routerLink="/reservas" routerLinkActive="active">Reservas</a></li>
+      <li><a routerLink="/perfil" routerLinkActive="active">Perfil</a></li>
+    </ul>
   </nav>
   <router-outlet></router-outlet>
 </main>

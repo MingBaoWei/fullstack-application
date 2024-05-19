@@ -1,0 +1,49 @@
+/* Estilos para el encabezado */
+header {
+    background-color: #ff5c00; /* Color de fondo */
+    color: #fff; /* Color de texto */
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .logo h1 {
+    margin: 0;
+  }
+
+  /* Estilos para la barra de navegación */
+  nav {
+    background-color: #333; /* Color de fondo */
+  }
+  
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-links li {
+    margin-right: 20px;
+  }
+  
+  .nav-links li:last-child {
+    margin-right: 0;
+  }
+  
+  .nav-links a {
+    color: #fff; /* Color de texto */
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    background-color: #777777; /* Cambio de color al pasar el mouse */
+  }
+  
+  /* Estilos para resaltar el enlace activo */
+  .nav-links a.active {
+    background-color: #ff5c00; /* Color de fondo */
+  }
+  

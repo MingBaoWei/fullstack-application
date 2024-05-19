@@ -1,4 +1,5 @@
 /* Estilos para la sección hero */
+/* Estilos para la sección hero */
 .hero {
   background-image: url('../../assets/img/qqq.jpg'); /* Agrega una imagen de fondo */
   background-size: cover; /* La imagen se ajustará para cubrir todo el contenedor */
@@ -6,8 +7,8 @@
   color: #fff; /* Color de texto */
   padding: 100px 0;
   text-align: center;
+  position: relative; /* Para posicionar el botón */
 }
-
 
 .hero-content {
   max-width: 600px;
@@ -17,11 +18,13 @@
 .hero h1 {
   font-size: 48px;
   margin-bottom: 20px;
+  color: #000; /* Cambia el color del texto a negro */
 }
 
 .hero p {
   font-size: 18px;
   margin-bottom: 40px;
+  color: #000; /* Cambia el color del texto a negro */
 }
 
 /* Estilos para los botones */
@@ -29,14 +32,33 @@
   display: inline-block;
   background-color: #ff5c00; /* Color de fondo */
   color: #fff; /* Color de texto */
-  padding: 10px 20px;
+  padding: 15px 30px; /* Aumenta el tamaño del botón */
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  font-size: 20px; /* Tamaño del texto */
+  border: none; /* Quita el borde */
 }
 
 .btn:hover {
   background-color: #d45500; /* Cambio de color al pasar el mouse */
+}
+
+.btn:before {
+  content: ''; /* Agrega un elemento pseudo antes del botón */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2); /* Color del efecto de resplandor */
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover:before {
+  width: 100%; /* Anima el efecto de resplandor al pasar el mouse */
 }
 
 /* Estilos para la sección about */
@@ -81,18 +103,26 @@
   align-items: center;
 }
 
-.social-links a {
-  color: #fff; /* Color de iconos */
-  margin: 0 20px; /* Espaciado entre los iconos */
-}
-
 .social-links a img {
   width: 40px; /* Tamaño de las imágenes */
   height: 40px;
 }
 
+.social-links a {
+  color: #fff; /* Color de iconos */
+  margin: 0 20px; /* Espaciado entre los iconos */
+}
+
 .social-links a:hover {
   color: #ff5c00; /* Cambio de color al pasar el mouse */
+}
+
+.address {
+  margin-top: 30px; /* Espacio superior */
+}
+
+.address p {
+  margin-bottom: 10px; /* Espacio inferior */
 }
 
 .gallery {
@@ -117,7 +147,16 @@
   100% { transform: translateX(-100%); } /* Fin de la animación */
 }
 
-.deli{
-/*centrar*/
-text-align: center;
+.deli {
+  /* Centrar el texto */
+  text-align: center;
+  /* Aumentar el tamaño de la fuente */
+  font-size: 30px;
+  /* Estilo de la fuente */
+  font-weight: bold;
+  /* Añadir márgenes para mejorar la forma */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* Añadir un borde inferior decorativo */
+  padding-bottom: 10px; /* Espacio entre el texto y el borde */
 }
