@@ -1,20 +1,21 @@
 <section class="reservas-container">
-    <div class="contRL">   
-        <div class="register-form">
-            <h2>Realiza tu Reserva</h2>
-            <form method="POST">
-                
-                <label for="numPersonas">Número de personas:</label>
-                <input type="number" id="numPersonas" name="numPersonas" required>
-                
-                <label for="fecha_hora">Fecha y hora:</label>
-                <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
-
-                <label for="numMesa">Número de mesa (opcional):</label>
-                <input type="number" id="numMesa" name="numMesa">
-                
-                <button type="submit">Reservar</button>
+    <div class="contRL">
+      <div class="register-form">
+        <h2>Realiza tu Reserva</h2>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+            <form (submit)="registrarReserva(); $event.preventDefault();">
+            <label for="numPersonas">Número de personas:</label>
+            <input type="number" id="numPersonas" name="numPersonas" [(ngModel)]="numPersonas" required>
+    
+            <label for="fecha_hora">Fecha y hora:</label>
+            <input type="datetime-local" id="fecha_hora" name="fecha_hora" [(ngModel)]="fecha_hora" required>
+    
+            <label for="numMesa">Número de mesa (opcional):</label>
+            <input type="number" id="numMesa" name="numMesa" [(ngModel)]="numMesa">
+    
+            <button type="submit">Reservar</button>
             </form>
-        </div>  
+        </div>
     </div>
-</section>
+  </section>
+  

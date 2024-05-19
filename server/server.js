@@ -118,7 +118,30 @@ app.put('/api/update-user', (req, res) => {
     );
 });
 
+// Definir ruta para registrar una nueva reserva
+app.post('/api/reservar', (req, res) => {
+    // Obtener los datos del cuerpo de la solicitud
+    const { numPersonas, fecha_hora, numMesa, usuarioId } = req.body;
 
+    // Verificar si el usuario está autenticado
+    if (!usuarioId) {
+        return res.status(401).json({ error: 'Usuario no autenticado' });
+    }
+
+    // Realizar la inserción en la base de datos
+    connection.query(
+        'INSERT INTO reservas (numPersonas, fecha_hora, numMesa, Usuarios_idUsuario) VALUES (?, ?, ?, ?)',
+        [numPersonas, fecha_hora, numMesa, usuarioId],
+        (error, results) => {
+            if (error) {
+                res.status(500).json({ error: error.message }); // Devolver un error en formato JSON
+            } else {
+                // Si la inserción es exitosa, enviar una respuesta de éxito en formato JSON
+                res.status(201).json({ message: 'Reserva registrada exitosamente' });
+            }
+        }
+    );
+});
 
 // // Definir ruta para obtener datos de la tabla 'menus'
 // app.get('/api/menus', (req, res) => {
