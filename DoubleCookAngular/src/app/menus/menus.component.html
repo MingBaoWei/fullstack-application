@@ -1,10 +1,14 @@
 <!-- Mostrar la lista de menús -->
 <div class="menu-container">
-    <div *ngFor="let menu of menus">
-      <h2>{{ menu.nombre }}</h2>
-      <p>Precio: {{ menu.precio }}</p>
-      <p>Descripción: {{ menu.descripcion }}</p>
-      <p>Categorías: {{ menu.categorias }}</p>
-      <p>Imagen: <img [src]="menu.img" alt="Imagen de {{ menu.nombre }}"></p>
-    </div>
+  <div class="menu-item" *ngFor="let menu of menus">
+      <div class="menu-info">
+          <h2>{{ menu.nombre }}</h2>
+          <p><strong>Precio:</strong> {{ menu.precio }}</p>
+          <p><strong>Descripción:</strong> {{ menu.descripcion }}</p>
+          <p><strong>Categorías:</strong> {{ menu.categoria }}</p>
+      </div>
+      <div class="menu-image">
+          <img [src]="menu.img" alt="Imagen de {{ menu.nombre }}">
+      </div>
+  </div>
 </div>

@@ -1,94 +1,62 @@
-/* Estilos generales */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-size: cover;
-    background-position: center;
-    color: #fff; /* Color de texto predeterminado */
-}
-
-.menu-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas por fila */
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    padding: 20px; /* Espaciado */
-    text-align: center;
-}
-
+/* Estilos del elemento de menú */
 .menu-item {
-    width: 100%; /* Ancho del contenedor */
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo con opacidad */
+    background-color: #ffffff; /* Fondo blanco */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, opacity 0.3s; /* Transición de entrada */
-    opacity: 0; /* Ocultar por defecto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    overflow: hidden; /* Evitar que las imágenes se desborden */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transición suave */
+    margin-bottom: 20px; /* Separación entre elementos */
+    width: calc(50% - 20px); /* Ancho del 50% del contenedor con margen */
+    display: inline-block; /* Mostrar en línea */
+    vertical-align: top; /* Alinear al principio */
+    box-sizing: border-box; /* Incluir bordes y relleno en el tamaño */
+    margin-right: 20px; /* Separación entre cajas de menú */
 }
 
-.menu-item.show {
-    opacity: 1; /* Mostrar con animación */
+/* Último elemento de menú no debe tener margen derecho */
+.menu-item:last-child {
+    margin-right: 0;
 }
 
+/* Efecto de elevación al pasar el cursor */
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Información del menú */
 .menu-info {
     padding: 20px;
 }
 
-.menu-price {
-    font-size: 18px;
-    color: #333;
+/* Títulos del menú */
+.menu-info h2 {
+    margin-top: 0;
+    font-size: 1.2rem; /* Tamaño del título */
+    color: #333; /* Color del texto del título */
+    transition: color 0.3s; /* Transición de color suave */
 }
 
-.menu-description {
-    color: #555;
+/* Cambio de color al pasar el cursor sobre el título */
+.menu-info h2:hover {
+    color: #007bff; /* Nuevo color al pasar el cursor */
 }
 
-.menu-categories {
-    color: #777;
-    margin-bottom: 10px;
+/* Descripción del menú */
+.menu-info p {
+    margin: 10px 0; /* Separación entre párrafos */
+    font-size: 0.9rem; /* Tamaño del texto */
 }
 
+/* Imagen del menú */
 .menu-image img {
     max-width: 100%;
+    display: block; /* Asegurar que la imagen se ajuste correctamente */
     border-radius: 10px;
-    margin-bottom: 10px;
+    transition: transform 0.3s; /* Transición suave */
 }
 
-.menu-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.menu-button:hover {
-    background-color: #0056b3;
-}
-
-.platos-container {
-    margin-top: 20px;
-    display: none;
-}
-
-.plato-item {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.plato-price {
-    font-weight: bold;
-    color: #007bff;
-}
-
-/* Animaciones */
-.menu-item-enter {
-    opacity: 0;
-    transform: translate
+/* Efecto de escala al pasar el cursor sobre la imagen */
+.menu-image img:hover {
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño */
 }
