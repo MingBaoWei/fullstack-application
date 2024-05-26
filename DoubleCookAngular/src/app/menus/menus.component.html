@@ -10,5 +10,28 @@
       <div class="menu-image">
           <img [src]="menu.img" alt="Imagen de {{ menu.nombre }}">
       </div>
+      <!-- Interfaz de usuario para la modificación del menú -->
+      <div *ngIf="authService.isAdmin()">
+        <h2>Modificar Menú</h2>
+        <!-- Campos del formulario para agregar, editar o eliminar elementos del menú -->
+        <form (submit)="crearMenu()">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="nuevoMenu.nombre" required>
+      
+          <label for="precio">Precio:</label>
+          <input type="number" id="precio" name="precio" [(ngModel)]="nuevoMenu.precio" required>
+      
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" name="descripcion" [(ngModel)]="nuevoMenu.descripcion" required></textarea>
+      
+          <label for="categorias">Categorías:</label>
+          <input type="text" id="categorias" name="categorias" [(ngModel)]="nuevoMenu.categorias" required>
+      
+          <button type="submit">Agregar Menú</button>
+        </form>
+      </div>
+      
+      
+  
   </div>
 </div>

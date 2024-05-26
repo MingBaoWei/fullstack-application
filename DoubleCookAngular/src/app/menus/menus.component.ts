@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MenuCategoriaServiceService } from '../menu-categoria-service.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-menus',
@@ -11,7 +12,7 @@ export class MenusComponent implements OnInit {
   menus: any[] = [];
   nuevoMenu: any = {}; // Objeto para almacenar los datos del nuevo menú
   
-  constructor(private menucategoria: MenuCategoriaServiceService, private http: HttpClient) { }
+  constructor(public authService: AuthService,private menucategoria: MenuCategoriaServiceService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.obtenerMenus();
@@ -44,4 +45,5 @@ export class MenusComponent implements OnInit {
         }
     );
 }
+
 }

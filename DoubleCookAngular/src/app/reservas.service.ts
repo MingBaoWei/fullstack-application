@@ -14,4 +14,12 @@ export class ReservasService {
     const reservaData = { numPersonas, fecha_hora, numMesa, usuarioId };
     return this.http.post<any>(`${this.apiUrl}/reservar`, reservaData);
   }
+  obtenerReservasFiltradas(usuarioId: number, fecha: string): Observable<any[]> {
+    const filtro = { usuarioId: usuarioId, fecha: fecha };
+    return this.http.get<any[]>(`${this.apiUrl}/reservas`, { params: filtro });
+  }
+  obtenerReservas(usuarioId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/reservas?usuarioId=${usuarioId}`);
+  }
+  
 }

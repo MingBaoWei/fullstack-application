@@ -56,4 +56,15 @@ export class AuthService {
     this.isLoggedIn = false;
     this.userData = null;
   }
+
+  isUserAdmin(): boolean {
+    return this.userData && this.userData.rol === 'admin';
+  }
+  
+  isAdmin(): boolean {
+    const userData = this.getUserData();
+    return userData && userData.rol === 'admin';
+  }
+  
+  
 }

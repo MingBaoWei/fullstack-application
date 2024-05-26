@@ -7,7 +7,7 @@ const app = express();
 
 // Configuración de la conexión MySQL
 const connection = mysql.createConnection({
-    host: '172.16.97.210',
+    host: '192.168.1.58',
     //host: '192.168.1.133',
     user: 'admin',
     password: '1234Qwer',
@@ -188,6 +188,141 @@ app.get('/api/reservas', (req, res) => {
 //     });
 // });
 
+/********************MENU***********************/
+// Definir ruta para obtener datos de la tabla 'menus'
+app.get('/api/menus', (req, res) => {
+    // Consulta SQL para obtener los datos de la tabla 'menus'
+    connection.query('SELECT * FROM menus', (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(results);
+        }
+    });
+});
+
+// Definir ruta para obtener datos de un menú específico y sus platos
+app.get('/api/menu/:idMenus', (req, res) => {
+    const menuId = req.params.idMenus;
+    // Consulta SQL para obtener los datos del menú y sus platos asociados
+    const query = `
+        SELECT m.idMenus, m.nombre AS nombreMenu, m.precio, m.descripcion AS descripcionMenu, m.img, m.categorias,
+               p.idPlato, p.nombre AS nombrePlato, p.descripcion AS descripcionPlato, p.precio AS precioPlato
+        FROM menus m
+        LEFT JOIN platos p ON m.idMenus = p.idMenus
+        WHERE m.idMenus = ?
+    `;
+    connection.query(query, [menuId], (error, results) => {
+        if (error) {
+            res.status(500).send({ error: 'Error al obtener el menú' });
+        } else {
+            // Organizar los resultados para tener un objeto de menú con su lista de platos asociados
+            const menu = {
+                idMenus: results[0].idMenus,
+                nombre: results[0].nombreMenu,
+                precio: results[0].precio,
+                descripcion: results[0].descripcionMenu,
+                img: results[0].img,
+                categorias: results[0].categorias,
+                platos: results.map(row => ({
+                    idPlato: row.idPlato,
+                    nombre: row.nombrePlato,
+                    descripcion: row.descripcionPlato,
+                    precio: row.precioPlato
+                }))
+            };
+            res.json(menu); // Devolver los resultados como JSON
+        }
+    });
+});
+/*
+// Ruta para crear un nuevo menú
+app.post('/api/menu', (req, res) => {
+    const { nombre, precio, descripcion, img, categorias } = req.body; // Obtener los datos del cuerpo de la solicitud
+
+    // Consulta SQL para insertar un nuevo menú con la ruta de la imagen
+    const query = 'INSERT INTO menus (nombre, precio, descripcion, img, categorias) VALUES (?, ?, ?, ?, ?)';
+    
+    // Ejecutar la consulta SQL con los datos proporcionados
+    connection.query(query, [nombre, precio, descripcion, img, categorias], (error, results) => {
+        if (error) {
+            res.status(500).send({ error: 'Error al crear el menú' });
+        } else {
+            res.status(201).send('Menú insertado correctamente'); // Enviar una respuesta al cliente
+        }
+    });
+});
+*/
+function isAdmin(req, res, next) {
+    if (req.user && req.user.rol === 'admin') {
+      return next();
+    } else {
+      return res.status(403).json({ error: 'Acceso denegado' });
+    }
+  }
+  
+  app.post('/api/menu', isAdmin, (req, res) => {
+    const { nombre, precio, descripcion, categorias } = req.body; // Obtener los datos del cuerpo de la solicitud
+  
+    // Consulta SQL para insertar un nuevo menú con la ruta de la imagen
+    const query = 'INSERT INTO menus (nombre, precio, descripcion, categorias) VALUES (?, ?, ?, ?)';
+    
+    // Ejecutar la consulta SQL con los datos proporcionados
+    connection.query(query, [nombre, precio, descripcion, categorias], (error, results) => {
+        if (error) {
+            res.status(500).send({ error: 'Error al crear el menú' });
+        } else {
+            res.status(201).send('Menú insertado correctamente'); // Enviar una respuesta al cliente
+        }
+    });
+  });
+  
+  app.get('/api/reservas', isAdmin, (req, res) => {
+    // Verificar si se proporcionó un ID de usuario y una fecha en los parámetros de la consulta
+    const usuarioId = req.query.usuarioId;
+    const fecha = req.query.fecha;
+
+    // Verificar si se proporcionó al menos un parámetro de filtro
+    if (!usuarioId && !fecha) {
+        return res.status(400).json({ error: 'Se requiere al menos un parámetro de filtro (usuarioId o fecha)' });
+    }
+
+    // Consulta SQL base para obtener reservas
+    let query = 'SELECT * FROM reservas';
+
+    // Parámetros para la consulta SQL
+    const queryParams = [];
+
+    // Agregar condiciones de filtrado según los parámetros proporcionados
+    if (usuarioId) {
+        query += ' WHERE Usuarios_idUsuario = ?';
+        queryParams.push(usuarioId);
+    }
+
+    if (fecha) {
+        if (queryParams.length > 0) {
+            query += ' AND';
+        } else {
+            query += ' WHERE';
+        }
+        query += ' fecha_hora >= ?';
+        queryParams.push(fecha);
+    }
+
+    // Ordenar las reservas por fecha_hora en orden descendente
+    query += ' ORDER BY fecha_hora DESC';
+
+    // Ejecutar la consulta SQL con los parámetros
+    connection.query(query, queryParams, (error, results) => {
+        if (error) {
+            res.status(500).json({ error: error.message });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+  
 
 // Iniciar el servidor
 const port = 3000;
