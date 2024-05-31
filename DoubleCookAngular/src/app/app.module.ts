@@ -11,6 +11,7 @@ import { ReservasComponent } from './reservas/reservas.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MisReservasComponent } from './mis-reservas/mis-reservas.component';
+import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MisReservasComponent } from './mis-reservas/mis-reservas.component';
     InicioComponent,
     PerfilComponent,
     MisReservasComponent,
+    PublicacionesComponent,
   ],
   imports: [
     BrowserModule,

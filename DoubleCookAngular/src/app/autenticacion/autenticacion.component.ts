@@ -83,4 +83,12 @@ export class AutenticacionComponent {
     this.showLoginForm = false;
     this.showRegisterForm = true;
   }
+
+  isUserAdmin(): boolean{
+    return this.authService.isUserAdmin();
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
 }

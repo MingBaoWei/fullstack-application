@@ -6,6 +6,7 @@ import { ReservasComponent } from './reservas/reservas.component';
 import { AutenticacionComponent } from './autenticacion/autenticacion.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MisReservasComponent } from './mis-reservas/mis-reservas.component'; // Importa el componente MisReservasComponent
+import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'reservas', component: ReservasComponent },
   { path: 'autenticacion', component: AutenticacionComponent },
   { path: 'perfil', component: PerfilComponent },
-  { path: 'mis-reservas', component: MisReservasComponent } // Agrega la nueva ruta para las reservas del usuario
+  { path: 'mis-reservas', component: MisReservasComponent },
+  { path: 'publicaciones', component: PublicacionesComponent} // Agrega la nueva ruta para las reservas del usuario
 ];
 
 @NgModule({

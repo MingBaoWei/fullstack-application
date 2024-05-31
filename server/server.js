@@ -235,7 +235,7 @@ app.get('/api/menu/:idMenus', (req, res) => {
         }
     });
 });
-/*
+
 // Ruta para crear un nuevo menú
 app.post('/api/menu', (req, res) => {
     const { nombre, precio, descripcion, img, categorias } = req.body; // Obtener los datos del cuerpo de la solicitud
@@ -252,7 +252,7 @@ app.post('/api/menu', (req, res) => {
         }
     });
 });
-*/
+
 function isAdmin(req, res, next) {
     if (req.user && req.user.rol === 'admin') {
       return next();
@@ -322,7 +322,53 @@ function isAdmin(req, res, next) {
     });
 });
 
-  
+/***************************************PUBLICACIONES************************************************/
+// Definir ruta para crear una nueva publicación
+app.post('/api/publicaciones', (req, res) => {
+    const { titulo, publicacion, usuarioId } = req.body; // Obtener los datos del cuerpo de la solicitud
+
+    // Consulta SQL para insertar una nueva publicación
+    const query = 'INSERT INTO publicaciones (titulo, publicacion, Usuarios_idUsuario) VALUES (?, ?, ?)';
+    
+    // Ejecutar la consulta SQL con los datos proporcionados
+    connection.query(query, [titulo, publicacion, usuarioId], (error, results) => {
+        if (error) {
+            res.status(500).send({ error: 'Error al crear la publicación' });
+        } else {
+            res.status(201).send('Publicación insertada correctamente'); // Enviar una respuesta al cliente
+        }
+    });
+});
+
+// Definir ruta para obtener todas las publicaciones
+app.get('/api/publicaciones', (req, res) => {
+    // Consulta SQL para obtener todas las publicaciones
+    connection.query('SELECT * FROM publicaciones', (error, results) => {
+        if (error) {
+            res.status(500).json({ error: 'Error al obtener las publicaciones' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+// Definir ruta para obtener una publicación específica por su ID
+app.get('/api/publicaciones/:idPublicacion', (req, res) => {
+    const idPublicacion = req.params.idPublicacion;
+    // Consulta SQL para obtener una publicación por su ID
+    connection.query('SELECT * FROM publicaciones WHERE idPublicaciones = ?', [idPublicacion], (error, results) => {
+        if (error) {
+            res.status(500).json({ error: 'Error al obtener la publicación' });
+        } else {
+            if (results.length === 0) {
+                res.status(404).json({ error: 'Publicación no encontrada' });
+            } else {
+                res.json(results[0]);
+            }
+        }
+    });
+});
+
 
 // Iniciar el servidor
 const port = 3000;
