@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MenuCategoriaServiceService } from '../menu-categoria-service.service';
 
 @Component({
   selector: 'app-perfil',
@@ -28,42 +27,13 @@ export class PerfilComponent implements OnInit{
     numero: '123-456-789'
   };
 
-  constructor(public authService: AuthService, private router: Router,private menucategoria: MenuCategoriaServiceService, private http: HttpClient) {
+  constructor(public authService: AuthService, private router: Router, private http: HttpClient) {
     this.userData = this.authService.isAuthenticated() ? this.authService.getUserData() : this.fakeData;
   }
 
   ngOnInit(): void {
-    this.obtenerMenus();
   }
-
-  obtenerMenus(): void {
-    this.menucategoria.obtenerMenus().subscribe(
-      (response) => {
-        this.menus = response;
-        // Agregar una propiedad para controlar la visibilidad de los platos
-        this.menus.forEach(menu => menu.platosVisible = false);
-      },
-      (error) => {
-        console.error('Error al obtener los menús:', error);
-      }
-    );
-  }
-
-  crearMenu(): void {
-    this.http.post('http://localhost:3000/api/menu', this.nuevoMenu).subscribe(
-        (response) => {
-            console.log('Menú creado exitosamente:', response);
-            // Actualizar la lista de menús después de crear el nuevo menú
-            this.obtenerMenus();
-            // Limpiar los campos del formulario después de crear el nuevo menú
-            this.nuevoMenu = {};
-        },
-        (error) => {
-            console.error('Error al crear el menú:', error);
-        }
-    );
-}
-
+  
   irAutenticacion() {
     this.router.navigate(['/autenticacion']);
   }

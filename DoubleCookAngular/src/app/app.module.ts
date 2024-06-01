@@ -12,6 +12,8 @@ import { InicioComponent } from './inicio/inicio.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { MisReservasComponent } from './mis-reservas/mis-reservas.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { ComentariosComponent } from './comentarios/comentarios.component';
+import { VerComentariosComponent } from './ver-comentarios/ver-comentarios.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { PublicacionesComponent } from './publicaciones/publicaciones.component'
     PerfilComponent,
     MisReservasComponent,
     PublicacionesComponent,
+    ComentariosComponent,
+    VerComentariosComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule // Agrega FormsModule aquí
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

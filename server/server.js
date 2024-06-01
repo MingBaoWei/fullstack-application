@@ -7,8 +7,8 @@ const app = express();
 
 // Configuración de la conexión MySQL
 const connection = mysql.createConnection({
-    host: '192.168.1.58',
-    //host: '192.168.1.133',
+    //host: '192.168.1.58',
+    host: '192.168.1.133',
     user: 'admin',
     password: '1234Qwer',
     database: 'mydb',
@@ -118,7 +118,46 @@ app.put('/api/update-user', (req, res) => {
         }
     );
 });
+/*************************************** Comentarios ************************************************/
+// Definir ruta para publicar un nuevo comentario
+app.post('/api/comentar', (req, res) => {
+    // Obtener los datos del cuerpo de la solicitud
+    const { titulo, comentario, estrellas, usuarioId } = req.body;
 
+    // Verificar si el usuario está autenticado
+    if (!usuarioId) {
+        return res.status(401).json({ error: 'Usuario no autenticado' });
+    }
+
+    // Realizar la inserción en la base de datos
+    connection.query(
+        'INSERT INTO comentarios (titulo, comentario, estrellas, Usuarios_idUsuario) VALUES (?, ?, ?, ?)',
+        [titulo, comentario, estrellas, usuarioId],
+        (error, results) => {
+            if (error) {
+                res.status(500).json({ error: error.message }); // Devolver un error en formato JSON
+            } else {
+                // Si la inserción es exitosa, enviar una respuesta de éxito en formato JSON
+                res.status(201).json({ message: 'Comentario publicado exitosamente' });
+            }
+        }
+    );
+});
+
+// Definir ruta para obtener todos los comentarios
+app.get('/api/comentarios', (req, res) => {
+    // Consulta SQL para obtener todos los comentarios
+    connection.query('SELECT * FROM comentarios', (error, results) => {
+        if (error) {
+            res.status(500).json({ error: error.message });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+
+/*************************************** Reservas ************************************************/
 // Definir ruta para registrar una nueva reserva
 app.post('/api/reservar', (req, res) => {
     // Obtener los datos del cuerpo de la solicitud
@@ -162,6 +201,37 @@ app.get('/api/reservas', (req, res) => {
         }
     });
 });
+
+// Ruta para eliminar una reserva
+app.delete('/api/reservas/:idReserva', (req, res) => {
+    const idReserva = req.params.idReserva;
+    
+    connection.query('DELETE FROM reservas WHERE idReserva = ?', [idReserva], (error, results) => {
+      if (error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(200).json({ message: 'Reserva eliminada exitosamente' });
+      }
+    });
+  });
+  
+  // Ruta para actualizar una reserva
+  app.put('/api/reservas/:idReserva', (req, res) => {
+    const idReserva = req.params.idReserva;
+    const { numPersonas, fecha_hora, numMesa } = req.body;
+    
+    connection.query(
+      'UPDATE reservas SET numPersonas = ?, fecha_hora = ?, numMesa = ? WHERE idReserva = ?',
+      [numPersonas, fecha_hora, numMesa, idReserva],
+      (error, results) => {
+        if (error) {
+          res.status(500).json({ error: error.message });
+        } else {
+          res.status(200).json({ message: 'Reserva actualizada exitosamente' });
+        }
+      }
+    );
+  });
 
 // // Definir ruta para obtener datos de la tabla 'menus'
 // app.get('/api/menus', (req, res) => {

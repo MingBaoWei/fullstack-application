@@ -3,18 +3,29 @@
     <h2 class="reservas-title">Mis Reservas</h2>
     <ul class="reservas-list">
       <li class="reserva-item" *ngFor="let reserva of reservas">
-        <p>Fecha y hora: {{ reserva.fecha_hora }}</p>
-        <p>Número de personas: {{ reserva.numPersonas }}</p>
-        <p>Número de mesa: {{ reserva.numMesa }}</p>
+        <div *ngIf="reserva.idReserva !== idReservaEditando">
+          <p>Fecha y hora: {{ reserva.fecha_hora }}</p>
+          <p>Número de personas: {{ reserva.numPersonas }}</p>
+          <p>Número de mesa: {{ reserva.numMesa }}</p>
+          <button class="btn modificar" (click)="editarReserva(reserva.idReserva)">Modificar</button>
+          <button class="btn eliminar" (click)="eliminarReserva(reserva.idReserva)">Eliminar</button>
+        </div>
+        <div *ngIf="reserva.idReserva === idReservaEditando">
+          <form (submit)="actualizarReserva(reserva)">
+            <label for="numPersonas">Número de personas:</label>
+            <input type="number" id="numPersonas" [(ngModel)]="reserva.numPersonas" name="numPersonas" required>
+
+            <label for="fecha_hora">Fecha y hora:</label>
+            <input type="datetime-local" id="fecha_hora" [(ngModel)]="reserva.fecha_hora" name="fecha_hora" required>
+
+            <label for="numMesa">Número de mesa (opcional):</label>
+            <input type="number" id="numMesa" [(ngModel)]="reserva.numMesa" name="numMesa">
+
+            <button type="submit" class="btn guardar">Guardar</button>
+            <button type="button" class="btn cancelar" (click)="cancelarEdicion()">Cancelar</button>
+          </form>
+        </div>
       </li>
     </ul>
   </div>
-  <!-- Interfaz de usuario para filtrar reservas por usuario y fecha -->
-  <div *ngIf="authService.isAdmin()">
-    <label for="filtro-fecha">Fecha:</label>
-    <input type="date" id="filtro-fecha" name="filtro-fecha" [(ngModel)]="fechaFiltro">
-    <button (click)="filtrarReservas()">Filtrar</button>
-  </div>
-  
-
 </body>

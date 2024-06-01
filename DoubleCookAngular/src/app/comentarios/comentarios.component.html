@@ -1,0 +1,23 @@
+<body>
+<section class="comentarios-container">
+    <div class="contRL">
+      <div class="comment-form">
+        <h2>Publica tu Comentario</h2>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+            <form (submit)="publicarComentario(); $event.preventDefault();">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" [(ngModel)]="titulo" required>
+    
+            <label for="comentario">Comentario:</label>
+            <textarea id="comentario" name="comentario" [(ngModel)]="comentario" required></textarea>
+    
+            <label for="estrellas">Estrellas:</label>
+            <input type="number" id="estrellas" name="estrellas" [(ngModel)]="estrellas" min="1" max="5" required>
+    
+            <button type="submit">Publicar</button>
+            <button (click)="verComentarios()">Ver Comentarios</button>
+            </form>
+        </div>
+    </div>
+</section>
+</body>

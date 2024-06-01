@@ -14,12 +14,17 @@ export class ReservasService {
     const reservaData = { numPersonas, fecha_hora, numMesa, usuarioId };
     return this.http.post<any>(`${this.apiUrl}/reservar`, reservaData);
   }
+
   obtenerReservasFiltradas(usuarioId: number, fecha: string): Observable<any[]> {
-    const filtro = { usuarioId: usuarioId, fecha: fecha };
+    const filtro = { usuarioId: usuarioId.toString(), fecha: fecha };
     return this.http.get<any[]>(`${this.apiUrl}/reservas`, { params: filtro });
   }
-  obtenerReservas(usuarioId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/reservas?usuarioId=${usuarioId}`);
+
+  eliminarReserva(idReserva: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/reservas/${idReserva}`);
   }
-  
+
+  editarReserva(idReserva: number, reserva: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/reservas/${idReserva}`, reserva);
+  }
 }

@@ -5,8 +5,10 @@ import { MenusComponent } from './menus/menus.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { AutenticacionComponent } from './autenticacion/autenticacion.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { MisReservasComponent } from './mis-reservas/mis-reservas.component'; // Importa el componente MisReservasComponent
+import { MisReservasComponent } from './mis-reservas/mis-reservas.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { ComentariosComponent } from './comentarios/comentarios.component';
+import { VerComentariosComponent } from './ver-comentarios/ver-comentarios.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'autenticacion', component: AutenticacionComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'mis-reservas', component: MisReservasComponent },
-  { path: 'publicaciones', component: PublicacionesComponent} // Agrega la nueva ruta para las reservas del usuario
+  { path: 'publicaciones', component: PublicacionesComponent},
+  { path: 'comentarios', component: ComentariosComponent},
+  { path: 'ver-comentarios', component: VerComentariosComponent}
 ];
 
 @NgModule({
