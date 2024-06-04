@@ -8,7 +8,7 @@ const app = express();
 // Configuración de la conexión MySQL
 const connection = mysql.createConnection({
     //host: '192.168.1.58',
-    host: '192.168.1.133',
+    host: '192.168.1.13',
     user: 'admin',
     password: '1234Qwer',
     database: 'mydb',
@@ -396,16 +396,22 @@ function isAdmin(req, res, next) {
 // Definir ruta para crear una nueva publicación
 app.post('/api/publicaciones', (req, res) => {
     const { titulo, publicacion, usuarioId } = req.body; // Obtener los datos del cuerpo de la solicitud
-
+    // Verificar si el usuario está autenticado
+    if (!usuarioId) {
+        return res.status(401).json({ error: 'Usuario no autenticado' });
+    }
     // Consulta SQL para insertar una nueva publicación
-    const query = 'INSERT INTO publicaciones (titulo, publicacion, Usuarios_idUsuario) VALUES (?, ?, ?)';
+    //const query = 'INSERT INTO publicaciones (titulo, publicacion, Usuarios_idUsuario) VALUES (?, ?, ?)';
     
     // Ejecutar la consulta SQL con los datos proporcionados
-    connection.query(query, [titulo, publicacion, usuarioId], (error, results) => {
+    connection.query(
+        'INSERT INTO publicaciones (titulo, publicacion, Usuarios_idUsuario) VALUES (?, ?, ?)',
+        [titulo, publicacion, usuarioId], 
+        (error, results) => {
         if (error) {
-            res.status(500).send({ error: 'Error al crear la publicación' });
+            res.status(500).json({ error: error.message});
         } else {
-            res.status(201).send('Publicación insertada correctamente'); // Enviar una respuesta al cliente
+            res.status(201).json({message: 'Publicación insertada correctamente'}); // Enviar una respuesta al cliente
         }
     });
 });
@@ -418,23 +424,6 @@ app.get('/api/publicaciones', (req, res) => {
             res.status(500).json({ error: 'Error al obtener las publicaciones' });
         } else {
             res.json(results);
-        }
-    });
-});
-
-// Definir ruta para obtener una publicación específica por su ID
-app.get('/api/publicaciones/:idPublicacion', (req, res) => {
-    const idPublicacion = req.params.idPublicacion;
-    // Consulta SQL para obtener una publicación por su ID
-    connection.query('SELECT * FROM publicaciones WHERE idPublicaciones = ?', [idPublicacion], (error, results) => {
-        if (error) {
-            res.status(500).json({ error: 'Error al obtener la publicación' });
-        } else {
-            if (results.length === 0) {
-                res.status(404).json({ error: 'Publicación no encontrada' });
-            } else {
-                res.json(results[0]);
-            }
         }
     });
 });

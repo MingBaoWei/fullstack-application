@@ -1,0 +1,87 @@
+/* Estilos generales para la sección de publicaciones */
+.publicaciones {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos para cada publicación individual */
+.publicacion {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.publicacion:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.publicacion h2 {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.publicacion p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666666;
+}
+
+/* Estilos para el formulario de creación de publicaciones */
+.crear-publicacion {
+  margin-top: 20px;
+}
+
+.crear-publicacion form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.crear-publicacion form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.crear-publicacion label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #333333;
+}
+
+.crear-publicacion input[type="text"],
+.crear-publicacion textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+.crear-publicacion button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.crear-publicacion button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para el mensaje de error */
+.error-message {
+  color: #ff0000;
+  margin-top: 10px;
+}

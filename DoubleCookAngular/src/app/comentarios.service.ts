@@ -12,7 +12,7 @@ export class ComentariosService {
 
   publicarComentario(titulo: string, comentario: string, estrellas: number, usuarioId: number): Observable<any> {
     const comentarioData = { titulo, comentario, estrellas, usuarioId };
-    return this.http.post<any>(`${this.apiUrl}/comentar`, comentarioData);
+    return this.http.post<any>(`${this.apiUrl}/comentarios`, comentarioData);
   }
 
   obtenerComentarios(): Observable<any[]> {

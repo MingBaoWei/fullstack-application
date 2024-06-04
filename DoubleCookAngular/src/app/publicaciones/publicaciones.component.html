@@ -1,21 +1,27 @@
 <div class="publicaciones">
   <h1>Publicaciones</h1>
 
-  <!-- Formulario para crear una nueva publicación -->
-  <div>
-    <form (submit)="crearPublicacion()">
+  <!-- Lista de publicaciones -->
+  <div class="lista-publicaciones">
+    <div class="publicacion" *ngFor="let publicacion of publicaciones">
+      <h2>{{ publicacion.titulo }}</h2>
+      <p>{{ publicacion.publicacion }}</p>
+    </div>
+  </div>
+
+  <!-- Formulario para crear una nueva publicación (solo visible para administradores) -->
+  <div *ngIf="isAdmin" class="crear-publicacion">
+    <form (submit)="crearPublicacion(); $event.preventDefault();">
       <label for="titulo">Título:</label>
-      <input type="text" id="titulo" name="titulo" [(ngModel)]="nuevaPublicacion.titulo" required>
-
+      <input type="text" id="titulo" name="titulo" [(ngModel)]="titulo" required>
+    
       <label for="publicacion">Publicación:</label>
-      <textarea id="publicacion" name="publicacion" [(ngModel)]="nuevaPublicacion.publicacion" required></textarea>
-
+      <textarea id="publicacion" name="publicacion" [(ngModel)]="publicacion" required></textarea>
+    
       <button type="submit">Crear Publicación</button>
     </form>
   </div>
-  <!-- Lista de publicaciones -->
-  <div *ngFor="let publicacion of publicaciones">
-    <h2>{{ publicacion.titulo }}</h2>
-    <p>{{ publicacion.publicacion }}</p>
-  </div>
+
+  <!-- Mostrar mensaje de error si existe -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 </div>

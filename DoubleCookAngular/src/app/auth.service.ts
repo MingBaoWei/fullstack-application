@@ -10,6 +10,7 @@ export class AuthService {
   
   private isLoggedIn: boolean = false;
   private userData: any = null;
+  private userDataAdmin: any = 'admin';
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +32,9 @@ export class AuthService {
 
   getUserData(): any {
     return this.userData;
+  }
+  getUserDataAdmin(): any {
+    return this.userDataAdmin;
   }
 
   actualizarUsuario(datosUsuario: any, newPassword: string): Observable<any> {
