@@ -264,9 +264,9 @@ app.get('/api/menus', (req, res) => {
     // Consulta SQL para obtener los datos de la tabla 'menus'
     connection.query('SELECT * FROM menus', (error, results) => {
         if (error) {
-            throw error;
+            res.status(500).json({ error: 'Error al obtener las publicaciones' });
         } else {
-            res.send(results);
+            res.json(results);
         }
     });
 });
@@ -307,18 +307,21 @@ app.get('/api/menu/:idMenus', (req, res) => {
 });
 
 // Ruta para crear un nuevo menú
-app.post('/api/menu', (req, res) => {
-    const { nombre, precio, descripcion, img, categorias } = req.body; // Obtener los datos del cuerpo de la solicitud
+app.post('/api/menus', (req, res) => {
+    const { nombre, precio, descripcion, img, categoria } = req.body; // Obtener los datos del cuerpo de la solicitud
 
     // Consulta SQL para insertar un nuevo menú con la ruta de la imagen
-    const query = 'INSERT INTO menus (nombre, precio, descripcion, img, categorias) VALUES (?, ?, ?, ?, ?)';
+    //const query = 'INSERT INTO menus (nombre, precio, descripcion, img, categoria) VALUES (?, ?, ?, ?, ?)';
     
     // Ejecutar la consulta SQL con los datos proporcionados
-    connection.query(query, [nombre, precio, descripcion, img, categorias], (error, results) => {
+    connection.query(
+        'INSERT INTO menus (nombre, precio, descripcion, img, categoria) VALUES (?, ?, ?, ?, ?)', 
+        [nombre, precio, descripcion, img, categoria],
+        (error, results) => {
         if (error) {
-            res.status(500).send({ error: 'Error al crear el menú' });
+            res.status(500).json({ error: error.message });
         } else {
-            res.status(201).send('Menú insertado correctamente'); // Enviar una respuesta al cliente
+            res.status(201).json({message:'Publicacion insertada correctamente'}); // Enviar una respuesta al cliente
         }
     });
 });
@@ -330,7 +333,7 @@ function isAdmin(req, res, next) {
       return res.status(403).json({ error: 'Acceso denegado' });
     }
   }
-  
+/*  
   app.post('/api/menu', isAdmin, (req, res) => {
     const { nombre, precio, descripcion, categorias } = req.body; // Obtener los datos del cuerpo de la solicitud
   
@@ -345,7 +348,7 @@ function isAdmin(req, res, next) {
             res.status(201).send('Menú insertado correctamente'); // Enviar una respuesta al cliente
         }
     });
-  });
+  });*/
   
   app.get('/api/reservas', isAdmin, (req, res) => {
     // Verificar si se proporcionó un ID de usuario y una fecha en los parámetros de la consulta

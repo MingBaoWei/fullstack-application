@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MenuCategoriaServiceService } from '../menu-categoria-service.service';
 import { AuthService } from '../auth.service';
@@ -11,11 +11,20 @@ import { AuthService } from '../auth.service';
 export class MenusComponent implements OnInit {
   menus: any[] = [];
   nuevoMenu: any = {}; // Objeto para almacenar los datos del nuevo menú
-  
-  constructor(public authService: AuthService,private menucategoria: MenuCategoriaServiceService, private http: HttpClient) { }
+  isUserAdmin: boolean = false;
+  errorMessage: string = '';
+  nombre: string = '';
+  precio: number = 0;
+  descripcion: string = '';
+  img: string = '';
+  categoria: string = '';
+
+  constructor(public authService: AuthService, private menucategoria: MenuCategoriaServiceService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.obtenerMenus();
+    //this.crearMenu();
+    this.isUserAdmin=this.authService.isAdmin();
   }
 
   obtenerMenus(): void {
@@ -30,7 +39,7 @@ export class MenusComponent implements OnInit {
       }
     );
   }
-
+  /*
   crearMenu(): void {
     this.http.post('http://localhost:3000/api/menu', this.nuevoMenu).subscribe(
         (response) => {
@@ -44,6 +53,33 @@ export class MenusComponent implements OnInit {
             console.error('Error al crear el menú:', error);
         }
     );
+}*/
+crearMenu(): void {
+  if (!this.authService.isAuthenticated()) {
+    this.errorMessage = 'Debes iniciar sesión para crear una publicación';
+    return;
+  }
+
+  if (!this.isUserAdmin) {
+    this.errorMessage = 'Solo los administradores pueden crear publicaciones';
+    return;
+  }
+
+  this.menucategoria.crearMenu(this.nombre, this.precio, this.descripcion, this.img, this.categoria).subscribe(
+    response => {
+      alert(response.message);
+      this.nombre = '';
+      this.precio = 0;
+      this.descripcion = '';
+      this.img = '';
+      this.categoria = '';
+      this.obtenerMenus();
+    },
+    error => {
+      console.error(error);
+      alert('Error al crear menú');
+    }
+  );
 }
 
 }

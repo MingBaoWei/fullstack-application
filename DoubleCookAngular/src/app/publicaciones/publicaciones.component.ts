@@ -15,7 +15,7 @@ export class PublicacionesComponent implements OnInit{
   errorMessage: string = '';
   publicaciones: any[] = [];
   nuevaPublicacion: any = {};
-  isAdmin: boolean = false;
+  isUserAdmin: boolean = false;
 
   constructor(private publicacionesService: PublicacionesService,private authService: AuthService) {
    }
@@ -23,7 +23,7 @@ export class PublicacionesComponent implements OnInit{
    
   ngOnInit(): void {
     this.obtenerPublicaciones();
-    this.isAdmin=this.authService.isUserAdmin();
+    this.isUserAdmin=this.authService.isAdmin();
   }
 
   obtenerPublicaciones(): void {
@@ -43,7 +43,7 @@ export class PublicacionesComponent implements OnInit{
       return;
     }
 
-    if (!this.isAdmin) {
+    if (!this.isUserAdmin) {
       this.errorMessage = 'Solo los administradores pueden crear publicaciones';
       return;
     }

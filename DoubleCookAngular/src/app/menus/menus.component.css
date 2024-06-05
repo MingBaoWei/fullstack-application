@@ -1,16 +1,23 @@
+/* Estilos del contenedor del menú */
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 /* Estilos del elemento de menú */
 .menu-item {
-    background-color: #ffffff; /* Fondo blanco */
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    overflow: hidden; /* Evitar que las imágenes se desborden */
-    transition: transform 0.3s, box-shadow 0.3s; /* Transición suave */
-    margin-bottom: 20px; /* Separación entre elementos */
-    width: calc(50% - 20px); /* Ancho del 50% del contenedor con margen */
-    display: inline-block; /* Mostrar en línea */
-    vertical-align: top; /* Alinear al principio */
-    box-sizing: border-box; /* Incluir bordes y relleno en el tamaño */
-    margin-right: 20px; /* Separación entre cajas de menú */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+    width: calc(50% - 20px);
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    margin-right: 20px;
 }
 
 /* Último elemento de menú no debe tener margen derecho */
@@ -30,33 +37,68 @@
 }
 
 /* Títulos del menú */
-.menu-info h2 {
+.menu-title {
     margin-top: 0;
-    font-size: 1.2rem; /* Tamaño del título */
-    color: #333; /* Color del texto del título */
-    transition: color 0.3s; /* Transición de color suave */
+    font-size: 1.2rem;
+    color: #333;
+    transition: color 0.3s;
 }
 
 /* Cambio de color al pasar el cursor sobre el título */
-.menu-info h2:hover {
-    color: #007bff; /* Nuevo color al pasar el cursor */
+.menu-title:hover {
+    color: #007bff;
 }
 
 /* Descripción del menú */
-.menu-info p {
-    margin: 10px 0; /* Separación entre párrafos */
-    font-size: 0.9rem; /* Tamaño del texto */
+.menu-description {
+    margin: 10px 0;
+    font-size: 0.9rem;
 }
 
 /* Imagen del menú */
-.menu-image img {
+.menu-img {
     max-width: 100%;
-    display: block; /* Asegurar que la imagen se ajuste correctamente */
+    display: block;
     border-radius: 10px;
-    transition: transform 0.3s; /* Transición suave */
+    transition: transform 0.3s;
 }
 
 /* Efecto de escala al pasar el cursor sobre la imagen */
-.menu-image img:hover {
-    transform: scale(1.05); /* Aumentar ligeramente el tamaño */
+.menu-img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos del formulario de modificación del menú */
+.menu-form {
+    margin-top: 20px;
+}
+
+/* Estilos de los elementos del formulario */
+.menu-form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.menu-form-input,
+.menu-form-textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.menu-form-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-form-button:hover {
+    background-color: #0056b3;
 }

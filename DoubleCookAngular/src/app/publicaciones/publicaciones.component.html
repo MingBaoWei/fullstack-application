@@ -10,7 +10,7 @@
   </div>
 
   <!-- Formulario para crear una nueva publicación (solo visible para administradores) -->
-  <div *ngIf="isAdmin" class="crear-publicacion">
+  <div *ngIf="isUserAdmin" class="crear-publicacion">
     <form (submit)="crearPublicacion(); $event.preventDefault();">
       <label for="titulo">Título:</label>
       <input type="text" id="titulo" name="titulo" [(ngModel)]="titulo" required>
