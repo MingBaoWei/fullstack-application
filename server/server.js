@@ -8,7 +8,7 @@ const app = express();
 // Configuración de la conexión MySQL
 const connection = mysql.createConnection({
     //host: '192.168.1.58',
-    host: '192.168.1.13',
+    host: '192.168.1.133',
     user: 'admin',
     password: '1234Qwer',
     database: 'mydb',
@@ -120,7 +120,7 @@ app.put('/api/update-user', (req, res) => {
 });
 /*************************************** Comentarios ************************************************/
 // Definir ruta para publicar un nuevo comentario
-app.post('/api/comentar', (req, res) => {
+app.post('/api/comentarios', (req, res) => {
     // Obtener los datos del cuerpo de la solicitud
     const { titulo, comentario, estrellas, usuarioId } = req.body;
 
