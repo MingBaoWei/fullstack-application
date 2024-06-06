@@ -80,3 +80,38 @@ span {
   .profile-button:hover {
     background-color: #45a049; /* color de fondo al pasar el mouse */
   }
+  .social-media {
+    background-color: #333; /* Color de fondo */
+    color: #fff; /* Color de texto */
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .social-links {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .social-links a img {
+    width: 40px; /* Tamaño de las imágenes */
+    height: 40px;
+  }
+  
+  .social-links a {
+    color: #fff; /* Color de iconos */
+    margin: 0 20px; /* Espaciado entre los iconos */
+  }
+  
+  .social-links a:hover {
+    color: #ff5c00; /* Cambio de color al pasar el mouse */
+  }
+  
+  .address {
+    margin-top: 30px; /* Espacio superior */
+  }
+  
+  .address p {
+    margin-bottom: 10px; /* Espacio inferior */
+  }
