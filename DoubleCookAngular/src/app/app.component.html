@@ -1,18 +1,20 @@
-<header>
-  <h1>DoubleCook</h1>
-</header>
-
-<main>
-  <nav>
-    <div class="left">
-      <a routerLink="/inicio">Inicio</a>
-      <a routerLink="/menus">Menús</a>
-      <a routerLink="/reservas">Reservas</a>
-      <a routerLink="/perfil">Perfil</a>
-      <a routerLink="/publicaciones">Publicaciones</a>
-      <a routerLink="/comentarios">Comentarios</a>
-  </div>
-  </nav>
-  <router-outlet></router-outlet>
-</main>
- 
+<body>
+  <header class="header-gradient">
+      <div class="logo-container">
+          <h1>DoubleCook</h1>
+      </div>
+  </header>
+  <main class="main-gradient">
+      <nav class="nav-gradient">
+          <div class="left">
+              <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+              <a routerLink="/menus" routerLinkActive="active">Menús</a>
+              <a routerLink="/reservas" routerLinkActive="active">Reservas</a>
+              <a routerLink="/perfil" routerLinkActive="active" class="perfil-link">Perfil</a>
+              <a routerLink="/comentarios" routerLinkActive="active">Comentarios</a>
+              <a routerLink="/publicaciones" routerLinkActive="active">Publicaciones</a>
+          </div>
+      </nav>
+      <router-outlet></router-outlet>
+  </main>
+</body>

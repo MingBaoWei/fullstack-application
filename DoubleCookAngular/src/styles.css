@@ -2,36 +2,72 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
 header {
     background-color: #333333;
     color: #ffffff;
     text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 3em;
+    color: #ffffff; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.7);
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.header-gradient {
+    background: linear-gradient(to top, #49170b, #b96b30);
     padding: 20px;
+    color: white;
+    text-align: center;
+}
+.nav-gradient {
+    background: linear-gradient(to top, #272424, #49170b);
 }
 
 nav {
     background-color: #555;
-    padding: 10px;
 }
 
 nav .left {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
 }
 
 nav .left a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     padding: 10px 20px;
-    margin-right: 20px;
+    margin: 5px 10px;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
-nav .left a:hover {
+nav .left a:hover,
+nav .left a.active {
     background-color: #777;
 }
 
-.active {
-    background-color: #777;
+nav .left a.perfil-link:hover {
+    background-color: #e4220098;
+}
+
+@media (max-width: 600px) {
+    nav .left {
+        flex-direction: column;
+    }
+
+    nav .left a {
+        margin: 5px 0;
+    }
 }

@@ -1,7 +1,5 @@
-/* Estilos para la sección hero */
-/* Estilos para la sección hero */
 .hero {
-  background-image: url('../../assets/img/qqq.jpg'); /* Agrega una imagen de fondo */
+  background-image: url('../../assets/img/fondoCarbon.png'); /* Agrega una imagen de fondo */
   background-size: cover; /* La imagen se ajustará para cubrir todo el contenedor */
   background-position: center; /* Centra la imagen */
   color: #fff; /* Color de texto */
@@ -18,65 +16,108 @@
 .hero h1 {
   font-size: 48px;
   margin-bottom: 20px;
-  color: #000; /* Cambia el color del texto a negro */
+  color: #ffffff;
 }
 
 .hero p {
   font-size: 18px;
   margin-bottom: 40px;
-  color: #000; /* Cambia el color del texto a negro */
+  color: #ffffff;
 }
+
+.scale-up {
+  transform: scale(0.5);
+  animation: scaleUp 3s ease-in-out infinite;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.75);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.75);
+  }
+}
+
+
 
 /* Estilos para los botones */
 .btn {
   display: inline-block;
-  background-color: #ff5c00; /* Color de fondo */
-  color: #fff; /* Color de texto */
-  padding: 15px 30px; /* Aumenta el tamaño del botón */
+  background-color: #ff5c00; 
+  color: #fff; 
+  padding: 15px 30px;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  font-size: 20px; /* Tamaño del texto */
-  border: none; /* Quita el borde */
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
 }
 
 .btn:hover {
-  background-color: #d45500; /* Cambio de color al pasar el mouse */
+  background-color: #d45500; 
 }
 
 .btn:before {
-  content: ''; /* Agrega un elemento pseudo antes del botón */
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 0;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.2); /* Color del efecto de resplandor */
+  background-color: rgba(255, 255, 255, 0.2);
   transition: width 0.3s ease;
   z-index: -1;
 }
 
 .btn:hover:before {
-  width: 100%; /* Anima el efecto de resplandor al pasar el mouse */
+  width: 100%;
 }
 
 /* Estilos para la sección about */
 .about {
-  background-color: #f9f9f9; /* Color de fondo */
+  background: linear-gradient(to top, #673815, #49170b);
   padding: 60px 0;
   text-align: center;
+  color: #ffff;
+  font-family: 'Arial', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .about h2 {
   font-size: 36px;
   margin-bottom: 30px;
+  letter-spacing: 2px; 
+  line-height: 1.5; 
 }
 
 /* Estilos para la sección de la galería */
 .gallery {
   padding: 60px 0;
+  background: linear-gradient(to top, #49170b, #272424);
+  color: #ffff;
+  font-family: 'Arial', sans-serif; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
+
+.gallery h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  letter-spacing: 2px; 
+  line-height: 1.5; 
+}
+
+.about p, .gallery p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  letter-spacing: 1px; 
+  line-height: 1.6; 
+}
+
 
 .image-grid {
   display: grid;
@@ -90,8 +131,8 @@
 }
 
 .social-media {
-  background-color: #333; /* Color de fondo */
-  color: #fff; /* Color de texto */
+  background-color: #333;
+  color: #fff;
   padding: 40px 0;
   text-align: center;
 }
@@ -104,59 +145,54 @@
 }
 
 .social-links a img {
-  width: 40px; /* Tamaño de las imágenes */
+  width: 40px;
   height: 40px;
 }
 
 .social-links a {
-  color: #fff; /* Color de iconos */
-  margin: 0 20px; /* Espaciado entre los iconos */
+  color: #fff;
+  margin: 0 20px;
 }
 
 .social-links a:hover {
-  color: #ff5c00; /* Cambio de color al pasar el mouse */
+  color: #ff5c00;
 }
 
 .address {
-  margin-top: 30px; /* Espacio superior */
+  margin-top: 30px;
 }
 
 .address p {
-  margin-bottom: 10px; /* Espacio inferior */
+  margin-bottom: 10px;
 }
 
 .gallery {
   padding: 60px 0;
-  overflow: hidden; /* Para ocultar las partes visibles de la galería que están fuera de su contenedor */
+  overflow: hidden;
 }
 
 .image-slider {
-  display: flex; /* Para que las imágenes se coloquen en línea */
-  gap: 20px; /* Espacio entre las imágenes */
-  animation: slide 10s infinite alternate; /* Animación para cambiar las imágenes */
+  display: flex; 
+  gap: 20px; 
+  animation: slide 10s infinite alternate;
 }
 
 .image-slider img {
-  max-width: calc(100% / 4 - 20px); /* Ancho máximo de las imágenes */
-  height: auto; /* Para mantener la proporción de aspecto de las imágenes */
-  transition: transform 0.5s ease; /* Transición suave al cambiar de imagen */
+  max-width: calc(100% / 4 - 20px);
+  height: auto; 
+  transition: transform 0.5s ease;
 }
 
 @keyframes slide {
-  0% { transform: translateX(0); } /* Inicio de la animación */
-  100% { transform: translateX(-100%); } /* Fin de la animación */
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } 
 }
 
 .deli {
-  /* Centrar el texto */
   text-align: center;
-  /* Aumentar el tamaño de la fuente */
   font-size: 30px;
-  /* Estilo de la fuente */
   font-weight: bold;
-  /* Añadir márgenes para mejorar la forma */
   margin-top: 20px;
   margin-bottom: 20px;
-  /* Añadir un borde inferior decorativo */
-  padding-bottom: 10px; /* Espacio entre el texto y el borde */
+  padding-bottom: 10px;
 }
