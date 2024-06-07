@@ -1,5 +1,5 @@
 <div class="publicaciones">
-  <h1>Publicaciones</h1>
+  <h1>Publicaciones y Descuentos DoubleCook</h1>
 
   <!-- Lista de publicaciones -->
   <div class="lista-publicaciones">
@@ -9,18 +9,23 @@
     </div>
   </div>
 
-  <!-- Formulario para crear una nueva publicación (solo visible para administradores) -->
-  <div *ngIf="isUserAdmin" class="crear-publicacion">
-    <form (submit)="crearPublicacion(); $event.preventDefault();">
+<!-- Formulario para crear una nueva publicación (solo visible para administradores) -->
+<div *ngIf="isUserAdmin" class="crear-publicacion">
+  <form (submit)="crearPublicacion(); $event.preventDefault();">
+    <div class="form-group">
       <label for="titulo">Título:</label>
       <input type="text" id="titulo" name="titulo" [(ngModel)]="titulo" required>
-    
+    </div>
+    <div class="form-group">
       <label for="publicacion">Publicación:</label>
       <textarea id="publicacion" name="publicacion" [(ngModel)]="publicacion" required></textarea>
-    
+    </div>
+    <div class="form-group">
       <button type="submit">Crear Publicación</button>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
+
 
   <!-- Mostrar mensaje de error si existe -->
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
@@ -37,7 +42,6 @@
       </a>
       <a href="https://x.com/?lang=es" target="_blank">
         <img src="../../assets/img/x.png" alt="Twitter">
-
       </a>
     </div>
     <div class="address">

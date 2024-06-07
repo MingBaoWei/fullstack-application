@@ -19,7 +19,7 @@
   <!-- Campos del formulario para agregar, editar o eliminar elementos del menú -->
   <form class="menu-form" (submit)="crearMenu(); $event.preventDefault();">
       <label class="menu-form-label" for="nombre">Nombre:</label>
-      <input class="menu-form-input" type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+      <input class="menu-form-input" type="text" id="nombre" placeholder="Todo mayuscula" name="nombre" [(ngModel)]="nombre" required>
 
       <label class="menu-form-label" for="precio">Precio:</label>
       <input class="menu-form-input" type="number" id="precio" name="precio" [(ngModel)]="precio" required>
@@ -28,10 +28,10 @@
       <textarea class="menu-form-textarea" id="descripcion" name="descripcion" [(ngModel)]="descripcion" required></textarea>
 
       <label class="menu-form-label" for="categoria">Categoría:</label>
-      <input class="menu-form-input" type="text" id="categoria" name="categoria" [(ngModel)]="categoria" required>
+      <input class="menu-form-input" type="text" id="categoria" placeholder="Principal/Entrante" name="categoria" [(ngModel)]="categoria" required>
 
       <label class="menu-form-label" for="img">Imagen URL:</label>
-      <input class="menu-form-input" type="text" id="img" name="img" [(ngModel)]="img" required>
+      <input class="menu-form-input" type="text" id="img" placeholder="../../assets/img/4.4.jpg" name="img" [(ngModel)]="img" required>
 
       <button class="menu-form-button" type="submit">Agregar Menú</button>
   </form>
