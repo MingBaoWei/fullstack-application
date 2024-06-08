@@ -25,7 +25,7 @@ connection.connect(function(err){
 });
 
 // Middleware para analizar el cuerpo de las solicitudes
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware para habilitar CORS
@@ -45,7 +45,6 @@ app.get('/api/data', (req, res) => {
 
 // Definir ruta para iniciar sesión
 app.post('/api/iniciar-sesion', (req, res) => {
-    // Obtener los datos del cuerpo de la solicitud
     const { correo, contrasena } = req.body;
 
     // Realizar la verificación de las credenciales en la base de datos
@@ -53,13 +52,12 @@ app.post('/api/iniciar-sesion', (req, res) => {
         [correo, contrasena],
         (error, results) => {
             if (error) {
-                res.status(500).json({ error: error.message }); // Error del servidor
+                res.status(500).json({ error: error.message });
             } else {
                 if (results.length > 0) {
-                    // Enviar los datos del usuario junto con el mensaje de inicio de sesión exitoso
                     res.status(200).json({ message: 'Inicio de sesión exitoso', user: results[0] });
                 } else {
-                    res.status(401).json({ error: 'Credenciales inválidas' }); // Credenciales inválidas
+                    res.status(401).json({ error: 'Credenciales inválidas' });
                 }
             }
         }
@@ -77,9 +75,8 @@ app.post('/api/register', (req, res) => {
         [correo, contrasena, nombre_apellido, rol, numero],
         (error, results) => {
             if (error) {
-                res.status(500).json({ error: error.message }); // Devolver un error en formato JSON
+                res.status(500).json({ error: error.message });
             } else {
-                // Si la inserción es exitosa, enviar una respuesta de éxito en formato JSON
                 res.status(201).json({ message: 'Usuario registrado exitosamente' });
             }
         }
@@ -135,9 +132,8 @@ app.post('/api/comentarios', (req, res) => {
         [titulo, comentario, estrellas, usuarioId],
         (error, results) => {
             if (error) {
-                res.status(500).json({ error: error.message }); // Devolver un error en formato JSON
+                res.status(500).json({ error: error.message });
             } else {
-                // Si la inserción es exitosa, enviar una respuesta de éxito en formato JSON
                 res.status(201).json({ message: 'Comentario publicado exitosamente' });
             }
         }
@@ -146,7 +142,6 @@ app.post('/api/comentarios', (req, res) => {
 
 // Definir ruta para obtener todos los comentarios
 app.get('/api/comentarios', (req, res) => {
-    // Consulta SQL para obtener todos los comentarios
     connection.query('SELECT * FROM comentarios', (error, results) => {
         if (error) {
             res.status(500).json({ error: error.message });
@@ -160,7 +155,6 @@ app.get('/api/comentarios', (req, res) => {
 /*************************************** Reservas ************************************************/
 // Definir ruta para registrar una nueva reserva
 app.post('/api/reservar', (req, res) => {
-    // Obtener los datos del cuerpo de la solicitud
     const { numPersonas, fecha_hora, numMesa, usuarioId } = req.body;
 
     // Verificar si el usuario está autenticado
@@ -174,9 +168,8 @@ app.post('/api/reservar', (req, res) => {
         [numPersonas, fecha_hora, numMesa, usuarioId],
         (error, results) => {
             if (error) {
-                res.status(500).json({ error: error.message }); // Devolver un error en formato JSON
+                res.status(500).json({ error: error.message });
             } else {
-                // Si la inserción es exitosa, enviar una respuesta de éxito en formato JSON
                 res.status(201).json({ message: 'Reserva registrada exitosamente' });
             }
         }
@@ -192,7 +185,7 @@ app.get('/api/reservas', (req, res) => {
     }
 
     // Consulta SQL para obtener las reservas del usuario
-    const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' '); // Obtener la fecha y hora actual en formato compatible con MySQL
+    const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
     connection.query('SELECT * FROM reservas WHERE Usuarios_idUsuario = ? AND fecha_hora > ? ORDER BY fecha_hora DESC', [usuarioId, currentDate], (error, results) => {
         if (error) {
             res.status(500).json({ error: error.message });
@@ -301,7 +294,7 @@ app.get('/api/menu/:idMenus', (req, res) => {
                     precio: row.precioPlato
                 }))
             };
-            res.json(menu); // Devolver los resultados como JSON
+            res.json(menu);
         }
     });
 });
@@ -321,7 +314,7 @@ app.post('/api/menus', (req, res) => {
         if (error) {
             res.status(500).json({ error: error.message });
         } else {
-            res.status(201).json({message:'Publicacion insertada correctamente'}); // Enviar una respuesta al cliente
+            res.status(201).json({message:'Publicacion insertada correctamente'});
         }
     });
 });
@@ -398,7 +391,7 @@ function isAdmin(req, res, next) {
 /***************************************PUBLICACIONES************************************************/
 // Definir ruta para crear una nueva publicación
 app.post('/api/publicaciones', (req, res) => {
-    const { titulo, publicacion, usuarioId } = req.body; // Obtener los datos del cuerpo de la solicitud
+    const { titulo, publicacion, usuarioId } = req.body; 
     // Verificar si el usuario está autenticado
     if (!usuarioId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });
@@ -414,7 +407,7 @@ app.post('/api/publicaciones', (req, res) => {
         if (error) {
             res.status(500).json({ error: error.message});
         } else {
-            res.status(201).json({message: 'Publicación insertada correctamente'}); // Enviar una respuesta al cliente
+            res.status(201).json({message: 'Publicación insertada correctamente'});
         }
     });
 });
