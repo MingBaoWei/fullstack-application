@@ -68,8 +68,8 @@
     margin-top: 5px;
   }
   .social-media {
-    background-color: #333; /* Color de fondo */
-    color: #fff; /* Color de texto */
+    background-color: #333; 
+    color: #fff;
     padding: 40px 0;
     text-align: center;
   }
@@ -82,23 +82,23 @@
   }
   
   .social-links a img {
-    width: 40px; /* Tamaño de las imágenes */
+    width: 40px;
     height: 40px;
   }
   
   .social-links a {
-    color: #fff; /* Color de iconos */
-    margin: 0 20px; /* Espaciado entre los iconos */
+    color: #fff; 
+    margin: 0 20px; 
   }
   
   .social-links a:hover {
-    color: #ff5c00; /* Cambio de color al pasar el mouse */
+    color: #ff5c00;
   }
   
   .address {
-    margin-top: 30px; /* Espacio superior */
+    margin-top: 30px;
   }
   
   .address p {
-    margin-bottom: 10px; /* Espacio inferior */
+    margin-bottom: 10px; 
   }

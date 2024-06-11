@@ -21,13 +21,13 @@ export class AutenticacionComponent {
     const contrasena = event.target.elements.contrasena.value;
     const confirmPass = event.target.elements.confirmPass.value;
     const nombre_apellido = event.target.elements.nombre_apellido.value;
-    const rol = 'cliente'; // Asignar directamente el valor 'cliente' al rol
+    const rol = 'cliente'; 
     const numero = event.target.elements.numero.value;
 
     // Validar que la contraseña y su confirmación sean iguales
     if (contrasena !== confirmPass) {
       this.errorMessage = 'La contraseña y su confirmación no coinciden';
-      return; // Detener la ejecución de la función
+      return;
     }
 
     // Construir el objeto con los datos del usuario
@@ -64,7 +64,6 @@ export class AutenticacionComponent {
       console.log(response);
       // Verificar si el inicio de sesión fue exitoso antes de redirigir
       if (response && response.message === 'Inicio de sesión exitoso') {
-          // Redirigir al perfil después del inicio de sesión exitoso
           console.log("Redireccionando al perfil");
           this.router.navigate(['/perfil']);
       }

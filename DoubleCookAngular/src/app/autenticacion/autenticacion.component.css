@@ -69,24 +69,24 @@
 }
 
 .autenticacion-container a {
-    color: #007bff; /* Color del enlace */
-    text-decoration: none; /* Quita el subrayado por defecto */
-    transition: color 0.3s; /* Transición suave del color */
+    color: #007bff;
+    text-decoration: none; 
+    transition: color 0.3s; 
   }
   
   .autenticacion-container a:hover {
-    color: #0056b3; /* Cambia el color al pasar el ratón */
-    text-decoration: underline; /* Subrayado al pasar el ratón */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    color: #0056b3;
+    text-decoration: underline;
+    cursor: pointer;
   }
   
   .autenticacion-container p {
-    color: black; /* Color del texto dentro del enlace */
+    color: black;
   }
 
   .social-media {
-    background-color: #333; /* Color de fondo */
-    color: #fff; /* Color de texto */
+    background-color: #333;
+    color: #fff;
     padding: 40px 0;
     text-align: center;
   }
@@ -99,23 +99,23 @@
   }
   
   .social-links a img {
-    width: 40px; /* Tamaño de las imágenes */
+    width: 40px;
     height: 40px;
   }
   
   .social-links a {
-    color: #fff; /* Color de iconos */
-    margin: 0 20px; /* Espaciado entre los iconos */
+    color: #fff; 
+    margin: 0 20px;
   }
   
   .social-links a:hover {
-    color: #ff5c00; /* Cambio de color al pasar el mouse */
+    color: #ff5c00;
   }
   
   .address {
-    margin-top: 30px; /* Espacio superior */
+    margin-top: 30px; 
   }
   
   .address p {
-    margin-bottom: 10px; /* Espacio inferior */
+    margin-bottom: 10px; 
   }

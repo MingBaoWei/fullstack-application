@@ -12,7 +12,7 @@ export class MisReservasComponent implements OnInit {
   
   reservas: any[] = [];
   fechaFiltro: string = '';
-  idReservaEditando: number | null = null; // Variable para almacenar el ID de la reserva que se está editando
+  idReservaEditando: number | null = null;
 
   constructor(private http: HttpClient, public authService: AuthService, private reservasService: ReservasService) { }
 
@@ -28,7 +28,6 @@ export class MisReservasComponent implements OnInit {
       },
       error => {
         console.error(error);
-        // Manejo de errores
       }
     );
   }
@@ -41,7 +40,6 @@ export class MisReservasComponent implements OnInit {
       },
       error => {
         console.error(error);
-        // Manejo de errores
       }
     );
   }
@@ -52,7 +50,7 @@ export class MisReservasComponent implements OnInit {
 
   cancelarEdicion() {
     this.idReservaEditando = null;
-    this.cargarReservas(); // Para resetear cualquier cambio no guardado
+    this.cargarReservas();
   }
 
   actualizarReserva(reserva: any) {

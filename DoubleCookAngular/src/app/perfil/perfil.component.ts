@@ -10,13 +10,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PerfilComponent implements OnInit{
   menus: any[] = [];
-  nuevoMenu: any = {}; // Objeto para almacenar los datos del nuevo menú
+  nuevoMenu: any = {}; 
 
   userData: any;
   isEditing: boolean = false;
-  isConfirmingPassword: boolean = false; // Para manejar la confirmación de la contraseña
-  confirmPassword: string = ''; // Para almacenar la contraseña ingresada para confirmación
-  newPassword: string = ''; // Para almacenar la nueva contraseña
+  isConfirmingPassword: boolean = false; 
+  confirmPassword: string = '';
+  newPassword: string = ''; 
 
   fakeData: any = {
     idUsuario: '123456',

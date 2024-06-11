@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px;
-    gap: 20px; /* Espaciado entre los elementos */
+    gap: 20px;
 }
 
 /* Estilos del elemento de menú */
@@ -38,7 +38,7 @@
 /* Información del menú */
 .menu-info {
     padding: 20px;
-    flex-grow: 1; /* Hace que la información ocupe el espacio disponible */
+    flex-grow: 1; 
     color: #ffffff;
 }
 

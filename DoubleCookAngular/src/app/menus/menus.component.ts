@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class MenusComponent implements OnInit {
   menus: any[] = [];
-  nuevoMenu: any = {}; // Objeto para almacenar los datos del nuevo menú
+  nuevoMenu: any = {};
   isUserAdmin: boolean = false;
   errorMessage: string = '';
   nombre: string = '';

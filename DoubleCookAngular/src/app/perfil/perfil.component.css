@@ -35,7 +35,7 @@ body {
 }
 
 .profile-button {
-    margin-right: 10px; /* Añade un margen inferior de 10px entre los botones */
+    margin-right: 10px; 
 }
 
 .profile-button.confirm {
@@ -69,20 +69,20 @@ span {
 
 .profile-button {
     padding: 10px 20px;
-    background-color: #4CAF50; /* color de fondo */
-    color: white; /* color del texto */
-    border: none; /* quitar borde */
-    border-radius: 5px; /* esquinas redondeadas */
-    cursor: pointer; /* cursor de puntero al pasar sobre el botón */
-    font-size: 16px; /* tamaño del texto */
+    background-color: #4CAF50;
+    color: white;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
   }
   
   .profile-button:hover {
-    background-color: #45a049; /* color de fondo al pasar el mouse */
+    background-color: #45a049; 
   }
   .social-media {
-    background-color: #333; /* Color de fondo */
-    color: #fff; /* Color de texto */
+    background-color: #333;
+    color: #fff; 
     padding: 40px 0;
     text-align: center;
   }
@@ -95,23 +95,23 @@ span {
   }
   
   .social-links a img {
-    width: 40px; /* Tamaño de las imágenes */
+    width: 40px;
     height: 40px;
   }
   
   .social-links a {
-    color: #fff; /* Color de iconos */
-    margin: 0 20px; /* Espaciado entre los iconos */
+    color: #fff;
+    margin: 0 20px;
   }
   
   .social-links a:hover {
-    color: #ff5c00; /* Cambio de color al pasar el mouse */
+    color: #ff5c00; 
   }
   
   .address {
-    margin-top: 30px; /* Espacio superior */
+    margin-top: 30px;
   }
   
   .address p {
-    margin-bottom: 10px; /* Espacio inferior */
+    margin-bottom: 10px;
   }
