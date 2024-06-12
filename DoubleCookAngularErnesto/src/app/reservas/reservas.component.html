@@ -1,0 +1,42 @@
+<section class="reservas-container">
+    <div class="contRL">
+      <div class="register-form">
+        <h2>Realiza tu Reserva</h2>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+            <form (submit)="registrarReserva(); $event.preventDefault();">
+            <label for="numPersonas">Número de personas:</label>
+            <input type="number" id="numPersonas" name="numPersonas" [(ngModel)]="numPersonas" required>
+    
+            <label for="fecha_hora">Fecha y hora:</label>
+            <input type="datetime-local" id="fecha_hora" name="fecha_hora" [(ngModel)]="fecha_hora" required>
+    
+            <label for="numMesa">Número de mesa (opcional):</label>
+            <input type="number" id="numMesa" name="numMesa" [(ngModel)]="numMesa">
+    
+            <button type="submit">Reservar</button>
+            <button (click)="verReservas()">Ver Mis Reservas</button>
+            </form>
+        </div>
+    </div>
+  </section>
+  <section class="social-media">
+    <div class="container">
+      <h2>Síguenos en las Redes Sociales</h2>
+      <div class="social-links">
+        <a href="https://www.facebook.com/?locale=es_ES" target="_blank">
+          <img src="../../assets/img/face.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
+          <img src="../../assets/img/insta.png" alt="Instagram">
+        </a>
+        <a href="https://x.com/?lang=es" target="_blank">
+          <img src="../../assets/img/x.png" alt="Twitter">
+  
+        </a>
+      </div>
+      <div class="address">
+        <p>Dirección: Calle Principal, 123, Madrid 28044, España</p>
+        <p>Indicaciones: Estamos ubicados en el corazón de la ciudad, cerca de la plaza central. Puedes encontrarnos justo al lado del cine principal.</p>
+      </div>
+    </div>
+  </section>

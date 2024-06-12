@@ -24,7 +24,7 @@ export class AuthService {
       tap(response => {
         if (response && response.message === 'Inicio de sesión exitoso') {
           this.isLoggedIn = true;
-          this.userData = response.user; // Almacena los datos del usuario
+          this.userData = response.user; 
         }
       })
     );
@@ -42,7 +42,7 @@ export class AuthService {
     return this.http.put<any>('http://localhost:3000/api/update-user', dataToSend).pipe(
       tap(response => {
         if (response && response.message === 'Datos actualizados correctamente') {
-          this.userData = datosUsuario; // Actualiza los datos del usuario localmente
+          this.userData = datosUsuario;
         }
       })
     );

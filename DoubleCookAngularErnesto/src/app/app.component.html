@@ -1,0 +1,24 @@
+<body>
+    <header class="header">
+        <div class="logo-container animated-logo">
+            <img src="../../assets/img/logo.png" alt="DoubleCook Logo">
+          </div>
+          
+        <nav class="nav">
+          <ul class="nav-links">
+            <li><a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
+            <li><a routerLink="/menus" routerLinkActive="active">Menús</a></li>
+            <li><a routerLink="/reservas" routerLinkActive="active">Reservas</a></li>
+            <li><a routerLink="/comentarios" routerLinkActive="active">Comentarios</a></li>
+            <li><a routerLink="/publicaciones" routerLinkActive="active">Publicaciones</a></li>
+            <li><a routerLink="/perfil" routerLinkActive="active" class="perfil-link">Perfil</a></li>
+          </ul>
+        </nav>
+        <div class="nav-toggle">&#9776;</div>
+      </header>
+      
+    <main class="main-gradient">
+      <router-outlet></router-outlet>
+    </main>
+  </body>
+  

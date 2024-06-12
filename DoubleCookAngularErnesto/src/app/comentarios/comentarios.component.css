@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('../../assets/img/6.6.jpg');
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 70.6vh;
+  padding-top: 50px;
+}
+
+
+.comentarios-container {
+  width: 80%; 
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.comment-form {
+  margin-bottom: 20px;
+}
+
+.comment-form h2 {
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: red;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff; 
+  color: white; 
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:not(:last-child) {
+  margin-right: 10px;
+}
+.social-media {
+  background-color: #000000;
+  color: #fff; 
+  padding: 40px 0;
+  text-align: center;
+}
+
+.social-links {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-links a img {
+  width: 40px; 
+  height: 40px;
+}
+
+.social-links a {
+  color: #fff; 
+  margin: 0 20px;
+}
+
+.social-links a:hover {
+  color: #ff5c00; 
+}
+
+.address {
+  margin-top: 30px; 
+}
+
+.address p {
+  margin-bottom: 10px; 
+}

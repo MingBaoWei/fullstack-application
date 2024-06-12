@@ -1,0 +1,52 @@
+<div class="publicaciones">
+  <h1>Publicaciones y Descuentos DoubleCook</h1>
+
+  <!-- Lista de publicaciones -->
+  <div class="lista-publicaciones">
+    <div class="publicacion" *ngFor="let publicacion of publicaciones">
+      <h2>{{ publicacion.titulo }}</h2>
+      <p>{{ publicacion.publicacion }}</p>
+    </div>
+  </div>
+
+<!-- Formulario para crear una nueva publicación (solo visible para administradores) -->
+<div *ngIf="isUserAdmin" class="crear-publicacion">
+  <form (submit)="crearPublicacion(); $event.preventDefault();">
+    <div class="form-group">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" [(ngModel)]="titulo" required>
+    </div>
+    <div class="form-group">
+      <label for="publicacion">Publicación:</label>
+      <textarea id="publicacion" name="publicacion" [(ngModel)]="publicacion" required></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit">Crear Publicación</button>
+    </div>
+  </form>
+</div>
+
+
+  <!-- Mostrar mensaje de error si existe -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>
+<section class="social-media">
+  <div class="container">
+    <h2>Síguenos en las Redes Sociales</h2>
+    <div class="social-links">
+      <a href="https://www.facebook.com/?locale=es_ES" target="_blank">
+        <img src="../../assets/img/face.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="../../assets/img/insta.png" alt="Instagram">
+      </a>
+      <a href="https://x.com/?lang=es" target="_blank">
+        <img src="../../assets/img/x.png" alt="Twitter">
+      </a>
+    </div>
+    <div class="address">
+      <p>Dirección: Calle Principal, 123, Madrid 28044, España</p>
+      <p>Indicaciones: Estamos ubicados en el corazón de la ciudad, cerca de la plaza central. Puedes encontrarnos justo al lado del cine principal.</p>
+    </div>
+  </div>
+</section>

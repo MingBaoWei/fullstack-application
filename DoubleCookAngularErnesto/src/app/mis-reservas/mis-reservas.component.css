@@ -1,0 +1,137 @@
+body {
+  background-image: url('../../assets/img/1.1.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.reservas-container {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la lista de reservas */
+.reservas-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Estilos para cada elemento de reserva */
+.reserva-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: rgba(249, 249, 249, 0.7);
+}
+
+/* Estilos para los párrafos de información de reserva */
+.reserva-item p {
+  margin: 5px 0;
+  text-align: center;
+}
+
+/* Estilos para el título "Mis Reservas" */
+.reservas-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Estilos para el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form label {
+  font-size: 14px;
+  color: #333;
+}
+
+form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos para los botones */
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+}
+
+.btn.modificar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn.eliminar {
+  background-color: #f44336; 
+  color: white;
+}
+
+.btn.guardar {
+  background-color: #4CAF50; 
+  color: white;
+}
+
+.btn.cancelar {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+.social-media {
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.social-links {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-links a img {
+  width: 40px;
+  height: 40px;
+}
+
+.social-links a {
+  color: #fff;
+  margin: 0 20px;
+}
+
+.social-links a:hover {
+  color: #ff5c00;
+}
+
+.address {
+  margin-top: 30px;
+}
+
+.address p {
+  margin-bottom: 10px;
+}

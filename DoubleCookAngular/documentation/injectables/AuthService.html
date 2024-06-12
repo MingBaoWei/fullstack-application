@@ -902,7 +902,7 @@ export class AuthService {
       tap(response &#x3D;&gt; {
         if (response &amp;&amp; response.message &#x3D;&#x3D;&#x3D; &#x27;Inicio de sesión exitoso&#x27;) {
           this.isLoggedIn &#x3D; true;
-          this.userData &#x3D; response.user; // Almacena los datos del usuario
+          this.userData &#x3D; response.user; 
         }
       })
     );
@@ -920,7 +920,7 @@ export class AuthService {
     return this.http.put&lt;any&gt;(&#x27;http://localhost:3000/api/update-user&#x27;, dataToSend).pipe(
       tap(response &#x3D;&gt; {
         if (response &amp;&amp; response.message &#x3D;&#x3D;&#x3D; &#x27;Datos actualizados correctamente&#x27;) {
-          this.userData &#x3D; datosUsuario; // Actualiza los datos del usuario localmente
+          this.userData &#x3D; datosUsuario;
         }
       })
     );

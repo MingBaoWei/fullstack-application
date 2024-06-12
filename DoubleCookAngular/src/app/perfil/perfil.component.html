@@ -29,6 +29,7 @@
         <input *ngIf="isEditing" id="numero" [(ngModel)]="userData.numero">
       </div>
     </div>
+    
     <div *ngIf="isAuthenticated()">
       <button *ngIf="!isEditing && !isConfirmingPassword" class="profile-button" (click)="startEditing()">Modificar Datos</button>
       <div *ngIf="isConfirmingPassword">
