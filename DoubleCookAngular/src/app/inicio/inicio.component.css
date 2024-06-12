@@ -80,7 +80,7 @@
 
 /* Estilos para la sección about */
 .about {
-  background: linear-gradient(to top, #673815, #49170b);
+  background-color: #181818;
   padding: 60px 0;
   text-align: center;
   color: #ffff;
@@ -98,7 +98,7 @@
 /* Estilos para la sección de la galería */
 .gallery {
   padding: 60px 0;
-  background: linear-gradient(to top, #49170b, #272424);
+  background-color: #000000;
   color: #ffff;
   font-family: 'Arial', sans-serif; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
@@ -114,8 +114,9 @@
 .about p, .gallery p {
   font-size: 18px;
   margin-bottom: 20px;
-  letter-spacing: 1px; 
+  letter-spacing: 1.5px; 
   line-height: 1.6; 
+  margin: 2px;
 }
 
 
@@ -131,7 +132,7 @@
 }
 
 .social-media {
-  background-color: #333;
+  background-color: #000000;
   color: #fff;
   padding: 40px 0;
   text-align: center;

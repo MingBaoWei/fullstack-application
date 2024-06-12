@@ -7,12 +7,12 @@
 }
 
 h1 {
-  color: #a3a3a3;
+  color: #ffffff;
   transition: color 0.3s;
 }
 
 h1:hover {
-  color: #4f4cff;
+  color: #949494;
 }
 
 /* Estilos para cada publicación individual */
@@ -27,7 +27,7 @@ h1:hover {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  background: linear-gradient(to top, #8d2d15, #d67d38);
+  background-image: url('../../assets/img/fondo.jpg');
   width: calc(50% - 10px);
   display: flex;
   flex-direction: column;
@@ -42,24 +42,24 @@ h1:hover {
 
 .publicacion h2 {
   font-size: 24px;
-  color: #383838;
+  color: #fafafa;
   margin-bottom: 10px;
   transition: color 0.3s;
 }
 
 .publicacion:hover h2 {
-  color: #991616;
+  color: #fa0000;
 }
 
 .publicacion p {
   font-size: 16px;
   line-height: 1.6;
-  color: #313131;
+  color: #ffffff;
   transition: color 0.3s;
 }
 
 .publicacion:hover p {
-  color: #000000;
+  color: #ff0000;
 }
 
 /* Estilos para el formulario de creación de publicaciones */
@@ -123,7 +123,7 @@ h1:hover {
 
 /* Estilos de redes sociales */
 .social-media {
-  background-color: #333;
+  background-color: #000000;
   color: #fff;
   padding: 40px 0;
   text-align: center;
