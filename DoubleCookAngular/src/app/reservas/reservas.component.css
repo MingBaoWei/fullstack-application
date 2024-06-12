@@ -21,6 +21,11 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     width: 400px;
     text-align: center;
+    transition: transform 0.3s;
+}
+
+.register-form:hover {
+  transform: scale(1.05);
 }
 
 .register-form h2 {

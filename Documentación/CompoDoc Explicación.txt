@@ -1,0 +1,4 @@
+npm run compodoc (Para generar la documentación)
+npx compodoc -s (Para ver la documentación en web)
+
+Está configurada para que la documentación generada se sitúe en la carpeta docs del proyecto Anglar DoubleCookAngular

@@ -18,6 +18,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
+    transition: transform 0.3s;
+}
+
+.profile:hover {
+  transform: scale(1.05);
 }
 
 .profile h1 {

@@ -69,6 +69,7 @@ export class PerfilComponent implements OnInit{
         alert('Contraseña incorrecta');
       }
     }, error => {
+      alert('Contraseña incorrecta');
       console.error(error);
     });
   }

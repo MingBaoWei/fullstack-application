@@ -1,2 +1,0 @@
-npm run compodoc (para generar la documentación)
-npx compodoc -s (para visualizar la documentación)

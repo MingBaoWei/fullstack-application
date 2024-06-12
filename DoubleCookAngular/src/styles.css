@@ -21,6 +21,11 @@ header h1 {
     padding: 10px;
     border-radius: 10px;
     display: inline-block;
+    transition: color 0.3s, transform 0.3s;
+}
+header h1:hover {
+    color: rgb(233, 255, 39); 
+    transform: scale(1.1);
 }
 
 .header-gradient {
@@ -50,24 +55,15 @@ nav .left a {
     padding: 10px 20px;
     margin: 5px 10px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 nav .left a:hover,
 nav .left a.active {
     background-color: #777;
+    transform: scale(1.1);
 }
 
 nav .left a.perfil-link:hover {
     background-color: #e4220098;
-}
-
-@media (max-width: 600px) {
-    nav .left {
-        flex-direction: column;
-    }
-
-    nav .left a {
-        margin: 5px 0;
-    }
 }
