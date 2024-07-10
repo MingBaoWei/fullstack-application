@@ -1,0 +1,125 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Usuarios` (
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `correo` VARCHAR(45) NOT NULL,
+  `contrasena` VARCHAR(45) NOT NULL,
+  `nombre_apellido` VARCHAR(50) NULL,
+  `rol` VARCHAR(20) NOT NULL,
+  `numero` VARCHAR(15) NULL,
+  PRIMARY KEY (`idUsuario`),
+  UNIQUE INDEX `contrasena_UNIQUE` (`contrasena` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Reservas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Reservas` (
+  `idReserva` INT NOT NULL AUTO_INCREMENT,
+  `numPersonas` INT NOT NULL,
+  `fecha_hora` DATETIME NOT NULL,
+  `numMesa` INT NULL,
+  `Usuarios_idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idReserva`, `Usuarios_idUsuario`),
+  INDEX `fk_Reservas_Usuarios1_idx` (`Usuarios_idUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Reservas_Usuarios1`
+    FOREIGN KEY (`Usuarios_idUsuario`)
+    REFERENCES `mydb`.`Usuarios` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Menus`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Menus` (
+  `idMenus` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL,
+  `precio` DECIMAL(8,2) NOT NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `img` VARCHAR(250) NULL,
+  `categoria` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idMenus`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Citas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Citas` (
+  `id_Reserva` INT NOT NULL,
+  `id_Menus` INT NOT NULL,
+  `estado` VARCHAR(20) NULL,
+  PRIMARY KEY (`id_Reserva`, `id_Menus`),
+  INDEX `fk_Reservas_has_Menus_Menus1_idx` (`id_Menus` ASC) VISIBLE,
+  INDEX `fk_Reservas_has_Menus_Reservas1_idx` (`id_Reserva` ASC) VISIBLE,
+  CONSTRAINT `fk_Reservas_has_Menus_Reservas1`
+    FOREIGN KEY (`id_Reserva`)
+    REFERENCES `mydb`.`Reservas` (`idReserva`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Reservas_has_Menus_Menus1`
+    FOREIGN KEY (`id_Menus`)
+    REFERENCES `mydb`.`Menus` (`idMenus`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Comentarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Comentarios` (
+  `idComentarios` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(45) NOT NULL,
+  `comentario` VARCHAR(450) NULL,
+  `estrellas` INT NULL,
+  `Usuarios_idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idComentarios`, `Usuarios_idUsuario`),
+  INDEX `fk_Comentarios_Usuarios1_idx` (`Usuarios_idUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Comentarios_Usuarios1`
+    FOREIGN KEY (`Usuarios_idUsuario`)
+    REFERENCES `mydb`.`Usuarios` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Publicaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Publicaciones` (
+  `idPublicaciones` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(45) NOT NULL,
+  `publicacion` VARCHAR(450) NOT NULL,
+  `Usuarios_idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idPublicaciones`, `Usuarios_idUsuario`),
+  INDEX `fk_Publicaciones_Usuarios1_idx` (`Usuarios_idUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Publicaciones_Usuarios1`
+    FOREIGN KEY (`Usuarios_idUsuario`)
+    REFERENCES `mydb`.`Usuarios` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
