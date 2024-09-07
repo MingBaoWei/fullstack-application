@@ -8,7 +8,7 @@ const app = express();
 // Configuración de la conexión MySQL
 const connection = mysql.createConnection({
     //host: '192.168.1.58',
-    host: '192.168.1.133',
+    host: '192.168.1.167',
     user: 'admin',
     password: '1234Qwer',
     database: 'mydb',

@@ -1,10 +1,10 @@
 /* Estilos del contenedor del menú */
 .menu-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Permitir que los elementos se ajusten en filas */
+    justify-content: flex-start; /* Alinear elementos al principio */
     padding: 20px;
-    gap: 20px;
+    gap: 20px; /* Espacio entre los menús */
 }
 
 /* Estilos del elemento de menú */
@@ -14,19 +14,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
-    margin-bottom: 20px;
-    width: calc(50% - 10px);
+    width: calc(25% - 20px); /* 4 menús por fila, restando el espacio del gap */
+    height: 400px; /* Limitar la altura de cada menú */
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    background-image: url('../../assets/img/fondoCarbon.png');
-}
-
-/* Último elemento de menú no debe tener margen derecho */
-.menu-item:last-child {
-    margin-right: 0;
+    background-image: url('../../assets/img/fondoComida.png');
 }
 
 /* Efecto de elevación al pasar el cursor */
@@ -37,32 +31,16 @@
 
 /* Información del menú */
 .menu-info {
-    padding: 20px;
-    flex-grow: 1; 
+    padding: 10px;
     color: #ffffff;
 }
 
 /* Títulos del menú */
 .menu-title {
-    margin-top: 10px;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: #ffffff;
     transition: color 0.3s;
     font-weight: bold;
-
-}
-
-/* Cambio de color al pasar el cursor sobre el título */
-.menu-title:hover {
-    color: #007bff;
-}
-
-/* Descripción del menú */
-.menu-description,
-.menu-price,
-.menu-category {
-    margin: 10px 0;
-    font-size: 0.9rem;
 }
 
 /* Imagen del menú */
@@ -71,22 +49,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    object-fit: cover;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .menu-img {
-    width: 50rem;
-    height: 30rem;
-    display: block;
-    transition: transform 0.3s;
+    width: 100%;
+    height: 150px;
     object-fit: cover;
+    transition: transform 0.3s;
 }
 
 /* Efecto de escala al pasar el cursor sobre la imagen */
 .menu-img:hover {
     transform: scale(1.05);
 }
+
 
 /* Estilos del formulario de modificación del menú */
 .menu-form {
