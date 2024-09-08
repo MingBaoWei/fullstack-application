@@ -3,17 +3,28 @@ const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const { PORT, DB_HOST, DB_NAME, DB_PASSWORD, DB_USER, DB_PORT } = require('./config.js');
+
 const app = express();
 
 // Configuración de la conexión MySQL
 const connection = mysql.createConnection({
-    //host: '192.168.1.58',
-    host: '192.168.1.167',
-    user: 'admin',
-    password: '1234Qwer',
-    database: 'mydb',
+    host: DB_HOST,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_NAME,
+    port: DB_PORT,
     connectTimeout: 300000
 });
+// const connection = mysql.createConnection({
+//     //host: '192.168.1.58',
+//     host: '192.168.1.167',
+//     user: 'admin',
+//     password: '1234Qwer',
+//     database: 'mydb',
+//     port: 3306,
+//     connectTimeout: 300000
+// });
 
 // Conexión a la base de datos
 connection.connect(function(err){
@@ -426,7 +437,6 @@ app.get('/api/publicaciones', (req, res) => {
 
 
 // Iniciar el servidor
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Servidor escuchando en el puerto ${port}`);
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
