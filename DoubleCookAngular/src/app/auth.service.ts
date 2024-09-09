@@ -15,12 +15,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   registrarUsuario(datosUsuario: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/register', datosUsuario);
+    return this.http.post<any>('https://doublecook-backend-production.up.railway.app/api/register', datosUsuario);
   }
 
   iniciarSesion(correo: string, contrasena: string): Observable<any> {
     const datosInicioSesion = { correo: correo, contrasena: contrasena };
-    return this.http.post<any>('http://localhost:3000/api/iniciar-sesion', datosInicioSesion).pipe(
+    return this.http.post<any>('https://doublecook-backend-production.up.railway.app/api/iniciar-sesion', datosInicioSesion).pipe(
       tap(response => {
         if (response && response.message === 'Inicio de sesión exitoso') {
           this.isLoggedIn = true;
@@ -39,7 +39,7 @@ export class AuthService {
 
   actualizarUsuario(datosUsuario: any, newPassword: string): Observable<any> {
     const dataToSend = { ...datosUsuario, newPassword };
-    return this.http.put<any>('http://localhost:3000/api/update-user', dataToSend).pipe(
+    return this.http.put<any>('https://doublecook-backend-production.up.railway.app/api/update-user', dataToSend).pipe(
       tap(response => {
         if (response && response.message === 'Datos actualizados correctamente') {
           this.userData = datosUsuario;
@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   confirmPassword(password: string): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/confirm-password', { idUsuario: this.userData.idUsuario, password });
+    return this.http.post<any>('https://doublecook-backend-production.up.railway.app/api/confirm-password', { idUsuario: this.userData.idUsuario, password });
   }
 
   isAuthenticated(): boolean {

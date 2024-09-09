@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PublicacionesService {
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'https://doublecook-backend-production.up.railway.app/api';
 
   constructor(private http: HttpClient) { }
 

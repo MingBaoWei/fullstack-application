@@ -8,14 +8,14 @@ import { tap, catchError } from 'rxjs/operators';
 })
 export class MenuCategoriaServiceService {
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'https://doublecook-backend-production.up.railway.app/api';
 
   constructor(private http: HttpClient) { }
 
   //private Data: any = null;
 
   obtenerMenus(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/api/menus');
+    return this.http.get<any>('https://doublecook-backend-production.up.railway.app/api/menus');
   }
 
   crearMenu(nombre: string, precio: number, descripcion: string, img: string, categoria: string): Observable<any>{
