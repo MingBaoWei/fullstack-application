@@ -1,21 +1,21 @@
-/* Estilos del contenedor del menú */
+/* Estilos generales */
 .menu-container {
     display: flex;
-    flex-wrap: wrap; /* Permitir que los elementos se ajusten en filas */
-    justify-content: flex-start; /* Alinear elementos al principio */
+    flex-wrap: wrap;
+    justify-content: flex-start;
     padding: 20px;
-    gap: 20px; /* Espacio entre los menús */
+    gap: 20px;
 }
 
-/* Estilos del elemento de menú */
+/* Estilos para pantallas grandes (por defecto) */
 .menu-item {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
-    width: calc(25% - 20px); /* 4 menús por fila, restando el espacio del gap */
-    height: 400px; /* Limitar la altura de cada menú */
+    width: calc(25% - 20px); /* 4 menús por fila */
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -29,13 +29,12 @@
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Información del menú */
+/* Imagen y texto del menú */
 .menu-info {
     padding: 10px;
     color: #ffffff;
 }
 
-/* Títulos del menú */
 .menu-title {
     font-size: 1.8rem;
     color: #ffffff;
@@ -43,7 +42,6 @@
     font-weight: bold;
 }
 
-/* Imagen del menú */
 .menu-image {
     overflow: hidden;
     display: flex;
@@ -59,11 +57,48 @@
     transition: transform 0.3s;
 }
 
-/* Efecto de escala al pasar el cursor sobre la imagen */
 .menu-img:hover {
     transform: scale(1.05);
 }
 
+/* Responsividad: ajustamos los estilos para diferentes tamaños de pantalla */
+@media (max-width: 1200px) {
+    .menu-item {
+        width: calc(33.33% - 20px); /* 3 menús por fila */
+    }
+}
+
+@media (max-width: 992px) {
+    .menu-item {
+        width: calc(50% - 20px); /* 2 menús por fila */
+    }
+}
+
+
+/* Ajustes específicos para pantallas más pequeñas (móviles) */
+@media (max-width: 576px) {
+    .menu-item {
+        width: 100%; /* Mantiene 1 menú por fila en móviles */
+        height: auto; /* Ajusta la altura */
+    }
+
+    .menu-title {
+        font-size: 1.3rem; /* Títulos más pequeños en móviles */
+    }
+
+    .menu-info {
+        padding: 8px; /* Menor padding en móviles */
+    }
+
+    .menu-img {
+        height: 100px; /* Imagen más pequeña en móviles */
+    }
+
+    .menu-container {
+        padding: 10px; /* Reducimos el padding del contenedor */
+        gap: 10px; /* Reducimos el espacio entre los menús */
+    }
+}
 
 /* Estilos del formulario de modificación del menú */
 .menu-form {
